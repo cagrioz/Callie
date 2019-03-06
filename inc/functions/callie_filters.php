@@ -128,3 +128,20 @@ if ( ! function_exists('callie_single_sidebar') ) {
         return $class;
     }
 }
+
+/**
+ * Move Comment Textarea to bottom
+ *
+ * @since 1.0
+ */
+if ( ! function_exists('callie_move_comment_field_to_bottom') ) {
+    function callie_move_comment_field_to_bottom( $fields ) {
+        $comment_field = $fields['comment'];
+        unset( $fields['comment'] );
+        $fields['comment'] = $comment_field;
+
+        return $fields;
+    }
+
+    add_filter( 'comment_form_fields', 'callie_move_comment_field_to_bottom', 99,1 );
+}

@@ -43,6 +43,12 @@ get_header(); ?>
 
                 </div>
                 <!-- Masonry / End -->
+                
+                <?php
+                if (  $wp_query->max_num_pages > 1 ) :
+                    callie_loadmore();
+                endif;
+                ?>
 
             </main>
             <!-- Postbar / End -->

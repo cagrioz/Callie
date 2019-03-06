@@ -56,7 +56,7 @@
 
                     <!-- Navigation Socials -->
                     <ul class="navigation-socials">
-                        <?php callie_social_share_links(); ?>
+                        <?php callie_social_profiles(); ?>
                     </ul>
                     <!-- Navigation Socials / End -->
 

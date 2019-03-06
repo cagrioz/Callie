@@ -14,6 +14,7 @@ Text Domain: callie
 /* ================ TABLE OF CONTENT ================
 
 # Reset CSS
+# WP Core
 # General Styling
     * Scrollbar
     * Headlines
@@ -46,7 +47,6 @@ Text Domain: callie
     * Related Posts
     * Gallery Post
 # Footer
-# WP Core
 
 ================================================== */
 
@@ -101,6 +101,119 @@ table {
 	border-spacing: 0;
 }
 
+/*--------------------------------------------------------------
+# WP Core
+--------------------------------------------------------------*/
+.alignnone {
+    float: none;
+    margin: 35px 0;
+}
+
+.aligncenter,
+div.aligncenter {
+    display: block;
+    margin: 35px auto;
+}
+
+.alignright {
+    float:right;
+    margin: 20px 0 20px 35px;
+}
+
+.alignleft {
+    float: left;
+    margin: 20px 35px 20px 0;
+}
+
+a img.alignright {
+    float: right;
+    margin: 20px 0 20px 35px;
+}
+
+a img.alignnone {
+    margin: 35px 0;
+}
+
+a img.alignleft {
+    float: left;
+    margin: 20px 35px 20px 0;
+}
+
+a img.aligncenter {
+    display: block;
+    margin: 35px auto;
+}
+
+.gallery-caption { display:block; }
+
+.wp-caption {
+    max-width: 100%;
+    text-align: center;
+}
+
+.wp-caption img[class*="wp-image-"] { display:block; }
+
+.wp-caption.alignnone { margin:5px 20px 20px 0; }
+
+.wp-caption.alignleft { margin:5px 20px 20px 0; }
+
+.wp-caption.alignright { margin:5px 0 20px 20px; }
+
+.wp-caption img {
+    border: 0 none;
+    height: auto;
+    margin: 0;
+    max-width: 100%;
+    padding: 0;
+    width: auto;
+}
+
+.wp-caption-text {
+    font-size: 12px;
+    line-height: 17px;
+    color: #999;
+    padding:5px;
+    margin: 0;
+}
+
+.wp-audio-shortcode,
+.post-password-form {
+    width: 100%;
+    float:left;
+    margin-bottom:50px;
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+.screen-reader-text:focus {
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+    clip: auto !important;
+    color: #21759b;
+    display: block;
+    font-size: 14px;
+    font-size: 0.875rem;
+    font-weight: bold;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000; /* Above WP toolbar. */
+}
+
 /*=============== General Settings ===================*/
 
 * {
@@ -119,6 +232,7 @@ body {
     -webkit-font-smoothing: antialiased;
     z-index: 9999;
     background-color: #fafafa;
+    font-family: 'Dosis', sans-serif;
 }
 
 .wrapper {
@@ -151,6 +265,208 @@ img {
     max-width: 100%;
     height: auto;
     vertical-align: middle;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: solid 1px rgba(160, 160, 160, 0.3);
+}
+
+dfn,
+cite,
+em,
+i {
+    font-style: italic;
+}
+
+address {
+    font-style: italic;
+    margin: 0 0 1.75em;
+}
+
+code,
+kbd,
+tt,
+var,
+samp,
+pre {
+    font-family: Inconsolata, monospace;
+}
+
+pre {
+    border: 1px solid #d1d1d1;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.3125;
+    margin: 0 0 1.75em;
+    max-width: 100%;
+    overflow: auto;
+    padding-top: 1.75em!important;
+    padding-bottom: 1.75em!important;
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+sup { vertical-align:super; }
+sub { vertical-align:sub; }
+
+code {
+    background-color: #eec7bc;
+    padding: 0.125em 0.25em;
+}
+
+abbr,
+acronym {
+    border-bottom: 1px dotted #eec7bc;
+    cursor: help;
+}
+
+mark,
+ins {
+    background: #eec7bc;
+    color: #fff;
+    padding: 3px 7px 4px;
+    text-decoration: none;
+}
+
+big {
+    font-size: 120%;
+}
+
+small {
+    font-size: 80%;
+}
+
+iframe{
+    width: 100%;
+}
+
+p embed,
+p iframe,
+p object,
+p video {
+    width: 100%;
+    margin-bottom: 30px;
+    vertical-align: middle;
+}
+
+dl {
+    margin: 0 0 25px;
+}
+
+dt {
+    font-weight: 700;
+    margin-bottom:5px;
+}
+
+dd {
+    margin: 0 0 25px;
+}
+
+dt,
+dd {
+    letter-spacing: .4px;
+    line-height: 1.3;
+}
+
+del {
+    opacity: 0.8;
+}
+
+table,
+th,
+td {
+    border: 1px solid #eaeaea;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-width: 1px 0 0 1px;
+    padding: 0!important;
+    table-layout: fixed;
+    /* Prevents HTML tables from becoming too wide */
+    width: 83%;
+    margin: 0 auto 25px;
+}
+
+caption,
+th,
+td {
+    font-weight: normal;
+    text-align: left;
+    vertical-align: middle;
+}
+
+th {
+    border-width: 0 1px 1px 0;
+    font-weight: 700;
+}
+
+td {
+    border-width: 0 1px 1px 0;
+}
+
+th,
+td {
+    padding: 0.4375em;
+    line-height: 1.3;
+}
+
+b,
+strong {
+    font-family: 'Dosis', sans-serif;
+    font-weight: 700;
+    color: #333;
+}
+
+b {
+    padding: 3px 6px;
+    background-color: #eec7bc;
+}
+
+.post-text ul,
+.comment-text ul,
+.post-text ol,
+.comment-text ol {
+    list-style-position: inside;
+    float: left;
+    margin: 0 0 25px;
+    width: 100%;
+}
+
+.post-text ul, .comment-text ul {list-style-type: disc;}
+.post-text ol, .comment-text ol {list-style-type: decimal;}
+
+.post-text ol li ol,
+.comment-text ol li ol,
+.post-text ul li ul,
+.comment-text ul li ul {
+    margin: 10px 0 0;
+    padding-left: 30px;
+}
+
+.post-text ol li,
+.comment-text ol li,
+.post-text ul li,
+.comment-text ul li {
+    float: left;
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    letter-spacing: .7px;
+    text-align: left;
+}
+
+.post-text ol li:last-child,
+.comment-text ol li:last-child,
+.post-text ul li:last-child,
+.comment-text ul li:last-child{
+    margin: 0;
 }
 
 /* Scrollbar */
@@ -194,7 +510,10 @@ p {
     font: 16px/1.75em 'Dosis', sans-serif;
 }
 
-a { color:#141615; }
+a, .post-text a * { color:#141615; }
+
+.post-text a { color:#eec7bc; }
+
 a,
 a:hover,
 a:focus{
@@ -276,19 +595,26 @@ textarea {
 
 textarea { resize:vertical; }
 
-.contact-form input, .contact-form textarea { width:100%; }
+.contact-form input, .contact-form textarea, .comment-form input, .comment-form textarea { width:100%; }
 
-.contact-form input {
+.contact-form input,
+.comment-form input {
     float: left;
     width: 49%;
 }
 
-.contact-form input:first-child { margin-right:2%; }
-.contact-form textarea { margin:10px 0; }
+.contact-form input:first-child, .comment-form input:first-child { margin-right:2%; }
+.contact-form textarea, .comment-form textarea { margin:10px 0; }
 
 input:focus, textarea:focus { 
     border-color: #f9e8e4;
     box-shadow: 0 0 3px #f9e8e4;
+}
+
+.comment-form input[type="submit"] {
+    margin: 0!important;
+    float: none!important;
+    width: unset!important;
 }
 
 /* =============== Layouts =============== */
@@ -377,7 +703,7 @@ input:focus, textarea:focus {
     color: #aaa;
 }
 
-.contact-form button:hover { background-color:#f9e8e4; }
+.contact-form button:hover, .comment-form input[type="submit"]:hover { background-color:#f9e8e4; }
 .mc4wp-form button:hover, .mc4wp-form input[type="submit"]:hover { border-left-color:#f9e8e4; }
 
 .post-title a:hover { color:#777; }
@@ -627,7 +953,11 @@ input:focus, textarea:focus {
     position: relative;
 }
 
-.post-title a { display:block; }
+.post-title a { 
+    display: block;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+ }
 
 .page .post-title h1 {
     margin-bottom: 35px;
@@ -1047,13 +1377,17 @@ input:focus, textarea:focus {
 .comment-title h3 {
     padding: 19px 0 20px;
     font: 13px 'Lato', sans-serif;
+    text-transform: uppercase;
 }
 
 .comment-list-item {
-    padding: 43px 53px;
+    padding: 38px 59px;
     margin-bottom: 20px;
     position: relative;
     background-color: #fff;
+    border: 5px solid transparent;
+    float: left;
+    width: 100%;
 }
 
 .comment img {
@@ -1103,7 +1437,46 @@ input:focus, textarea:focus {
     background-color: #141615;
 }
 
-.bypostauthor { background-color:#fcf4f2!important; }
+.comment .comment-edit,
+.comment .comment-reply {
+    margin: 0;
+}
+.comment .comment-reply { margin-right:10px; }
+
+.comment-reply-title {
+    float: left;
+    width: 100%;
+    font-size: 17px;
+    letter-spacing: 1px;
+    text-transform:uppercase;
+}
+
+.comment-reply-title a {
+    color: #555;
+    float: right;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1px;
+}
+
+.comment-reply-title a::before {
+    font-family: "FontAwesome";
+    content: '\f057';
+    margin-right: 5px;
+    font-size: 13px;
+}
+
+.logged-in-as {
+    font-size: 15px;
+    letter-spacing: .8px;
+}
+
+.logged-in-as a {
+    color: #000;
+    text-decoration: underline;
+}
+
+.bypostauthor > .comment-list-item:first-child { border-color:#fcf4f2!important; }
 
 /* =============== Owl Carousel Styles =============== */
 .owl-dot { outline:none!important; }
@@ -1190,115 +1563,66 @@ input:focus, textarea:focus {
 .footer .widget { padding:0 15px 0 15px; }
 .footer .widget_media_image { text-align:left; }
 
-/*--------------------------------------------------------------
-# WP Core
---------------------------------------------------------------*/
-.alignnone {
-    float: none;
-    margin: 35px 0;
-}
-
-.aligncenter,
-div.aligncenter {
+.post-load-wrap {
     display: block;
-    margin: 35px auto;
-}
-
-.alignright {
-    float:right;
-    margin: 20px 0 20px 35px;
-}
-
-.alignleft {
-    float: left;
-    margin: 20px 35px 20px 0;
-}
-
-a img.alignright {
-    float: right;
-    margin: 20px 0 20px 35px;
-}
-
-a img.alignnone {
-    margin: 35px 0;
-}
-
-a img.alignleft {
-    float: left;
-    margin: 20px 35px 20px 0;
-}
-
-a img.aligncenter {
-    display: block;
-    margin: 35px auto;
-}
-
-.gallery-caption { display:block; }
-
-.wp-caption {
-    max-width: 100%;
+    width: 100%;
+    margin: 85px 0 20px;
     text-align: center;
 }
 
-.wp-caption img[class*="wp-image-"] { display:block; }
-
-.wp-caption.alignnone { margin:5px 20px 20px 0; }
-
-.wp-caption.alignleft { margin:5px 20px 20px 0; }
-
-.wp-caption.alignright { margin:5px 0 20px 20px; }
-
-.wp-caption img {
-    border: 0 none;
-    height: auto;
-    margin: 0;
-    max-width: 100%;
-    padding: 0;
-    width: auto;
+.callie_loadmore {
+    display: inline-block;
+    text-align: center;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+    position: relative;
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    background-color: #f6ddd6;
 }
 
-.wp-caption-text {
-    font-size: 12px;
-    line-height: 17px;
-    color: #999;
-    padding:5px;
-    margin: 0;
-}
-
-.wp-audio-shortcode,
-.post-password-form {
-    width: 100%;
-    float:left;
-    margin-bottom:50px;
-}
-
-/* Text meant only for screen readers. */
-.screen-reader-text {
-    clip: rect(1px, 1px, 1px, 1px);
-    position: absolute !important;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
-}
-
-.screen-reader-text:focus {
-    background-color: #f1f1f1;
-    border-radius: 3px;
-    -webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
-    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
-    clip: auto !important;
-    color: #21759b;
+.callie_loadmore:before {
+    content: '';
     display: block;
-    font-size: 14px;
-    font-size: 0.875rem;
-    font-weight: bold;
-    height: auto;
-    left: 5px;
-    line-height: normal;
-    padding: 15px 23px 14px;
-    text-decoration: none;
-    top: 5px;
-    width: auto;
-    z-index: 100000; /* Above WP toolbar. */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 34px;
+    width: 34px;
+    border-radius: 100%;
+    transform: translate(-50%, -50%);
+    background-color: #eee;
+}
+
+.callie_loadmore.loading {
+    animation: loadingwrap .3s ease-in-out infinite;
+    animation-direction: alternate;
+}
+
+.callie_loadmore.loading:before {
+    animation: loadingin .3s ease-in-out infinite;
+    animation-direction: alternate;
+}
+
+@keyframes loadingwrap {
+    0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .2;
+  }
+}
+
+@keyframes loadingin {
+    0% {
+    height: 34px;
+    width: 34px;
+  }
+  100% {
+    height: 17px;
+    width: 17px;
+    opacity: .2;
+  }
 }
