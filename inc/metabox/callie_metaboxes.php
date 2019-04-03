@@ -4,9 +4,9 @@
  *
  * @package    Callie
  * @version    1.0
- * @author     CreativeLibrary <creativelibraryemail>
- * @copyright  Copyright (c) 2018, CreativeLibrary
- * @link       demolinkhere
+ * @author     CreativeLibrary <cagriozarpaciii@gmail.com>
+ * @copyright  Copyright (c) 2019, CreativeLibrary
+ * @link       https://clibrary.pro/callie
  * @license    http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2 or later
  */
 
@@ -68,7 +68,7 @@ function Callie_Metaboxes( $meta_boxes ) {
 		'fields'     => array(
 			// TEXTAREA
 			array(
-				'name' => esc_html__( 'Video Embed Code', 'callie' ),
+				'name' => esc_html__( 'Video URL Without Protocol (HTTPS OR HTTP)', 'callie' ),
 				'id'   => "{$prefix}video_format",
 				'type' => 'textarea',
 				'cols' => 20,
@@ -124,7 +124,7 @@ function Callie_Metaboxes( $meta_boxes ) {
 			array(
 				'name'             => esc_html__( '** Upload Story Media Items', 'callie' ),
 				'id'               => "{$prefix}story_media",
-				'type'             => 'file_upload',
+				'type'             => 'file_advanced',
 				'max_file_uploads' => 15,
 			)
 		)

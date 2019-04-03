@@ -6,7 +6,6 @@
  *
  */
 ?>
-
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -90,25 +89,27 @@
             <!-- Mobile Menu Header / End -->
 
             <!-- Mobile Navigation -->
-            <ul class="mobile-navigation">
-                <?php
-                wp_nav_menu( array(
-                    'theme_location' => 'main-menu',
-                    'container'      => false,
-                    'menu_class'     => 'main-menu'
-                ) );
-                ?>
-            </ul>
+            <?php
+            wp_nav_menu( array(
+                'theme_location' => 'main-menu',
+                'container'      => false,
+                'menu_class'     => 'mobile-navigation'
+            ) );
+            ?>
             <!-- Mobile Navigation / End -->
 
         </div>
         <!-- Mobile Menu / End -->
 
-        <?php 
+        <?php
+        $story_hide           = get_theme_mod('hide_story', false);
+        $story_qty            = get_theme_mod('story_qty', 6);
+        $story_img_duration   = get_theme_mod('story_img_duration', 3);
+        $story_video_duration = get_theme_mod('story_video_duration', '');
 
         $args = array(
             'post_type'      => 'post',
-            'posts_per_page' => 6,
+            'posts_per_page' => $story_qty,
             'ignore_sticky_posts' => '1',
             'meta_query' => array(
                 array(
@@ -120,9 +121,11 @@
         );
 
         $query = new WP_Query($args);
+
+        $images = [];
         ?>
 
-        <?php if ( $query->have_posts() ) : ?>
+        <?php if ( !$story_hide && $query->have_posts() ) : ?>
         <!-- Stories
         ================================================== -->
         <div class="stories">
@@ -132,58 +135,90 @@
 
                     <?php while ( $query->have_posts() ) : $query->the_post(); ?>
 
-                        <?php 
-                        $images = array(
-                            'url' => array(),
-                            'alt' => array()
-                        );
-                        $files = rwmb_meta("callie_story_media"); 
-                        ?>
+                        <?php $files = rwmb_meta("callie_story_media", "type=image&size=callie_thumb"); ?>
 
-                        <?php if ( has_post_thumbnail() ) : ?>
+                        <?php if ( has_post_thumbnail() && $files ) : ?>
                         <!-- Story -->
-                        <div class="story-view-item" style="background-image: url( <?php esc_url( the_post_thumbnail_url('callie_story_thumb') ); ?> )">
+                        <div class="story-view-item" style="background-image: url( <?php esc_url( the_post_thumbnail_url('callie_story_thumb') ); ?> );">
 
-                            <?php if ($files) : ?>
                             <ul class="media">
 
                                 <?php foreach ( $files as $file ) : ?>
 
-                                <?php if ($file['fileformat'] !== 'mp4') : ?>
-                                    <li data-duration="3"><img src="<?php echo esc_url($file['url']); ?>" alt="<?php echo esc_attr($file['alt']); ?>" /></li>
-                                    <?php
-                                    $images['url'][] = $file['url'];
-                                    $images['alt'][] = $file['alt'];
-                                    ?>
+                                <?php if (isset($file['fileformat'])) : ?>
+                                    <?php if ($file['fileformat'] == 'mp4') : ?>
+                                        <li data-duration="<?php if ($story_video_duration) {echo esc_attr($story_video_duration);} else {echo esc_attr($file['length']);} ?>"><video src="<?php echo esc_url($file['url']); ?>" controls></video></li>
+                                    <?php else : ?>
+                                        <li data-duration="3"><h3>MP4 fileformat is only allowed in story.</h3></li>
+                                    <?php endif; ?>
                                 <?php else : ?>
-                                    <li data-duration="<?php echo $file['length']; ?>"><video src="<?php echo esc_url($file['url']); ?>" controls></video></li>
+                                    <li data-duration="<?php echo esc_attr($story_img_duration); ?>"><img src="<?php echo esc_url($file['url']); ?>" alt="<?php echo bloginfo('name'); ?> Story" /></li>
+                                    <?php
+                                    $images[] = $file['url'];
+                                    ?>
                                 <?php endif; ?>
 
                                 <?php endforeach; ?>
 
                             </ul>
-                            <?php endif; ?>
                             
                         </div>
                         <!-- Story / End -->
                         <?php endif; ?>
 
-                    <?php endwhile; ?>
+                    <?php endwhile; wp_reset_postdata(); ?>
 
                 </div>
 
-                <?php if (count($images['url']) >= 3) : ?>
                 <ul class="story-bg">
+                <?php if (count($images) >= 5) : ?>
 
-                    <?php for ($i = 0; $i < count($images['url']); $i++) : ?>
-
+                    <?php for ($i = 0; $i < count($images); $i++) : ?>
                         <?php if ( $i == 5 ) { break; } ?>
-                        <li><img src="<?php echo esc_url( $images['url'][$i] ); ?>" alt="<?php echo esc_attr( $images['alt'][$i] ); ?>"></li>
-
+                        <li><img src="<?php echo esc_url( $images[$i] ); ?>" alt="<?php echo bloginfo('name'); ?> story background"></li>
                     <?php endfor; ?>
 
-                </ul>
+                <?php else : ?>
+
+                    <?php
+                    $recent_args = array(
+                        'numberposts' => 5,
+                        'orderby' => 'post_date',
+                        'order' => 'DESC',
+                        'post_type' => 'post',
+                        'meta_query' => array(
+                            array(
+                             'key' => '_thumbnail_id',
+                             'compare' => 'EXISTS'
+                            ),
+                        )
+                    );
+                    $recent_posts = wp_get_recent_posts( $recent_args );
+
+                    $alternative_bgs = array(
+                        'url' => array(),
+                        'alt' => array()
+                    );
+                    $recent_ids = [];
+
+                    // Pull post IDs which has images
+                    foreach ($recent_posts as $post) {
+                        $recent_ids[] = $post['ID'];
+                    }
+
+                    // Push thumbnail URLs using IDs
+                    foreach ($recent_ids as $id) {
+                        $alternative_bgs['url'][] = get_the_post_thumbnail_url( $id, 'callie_widget_post');
+                        $alternative_bgs['alt'][] = get_post_meta( $id, '_wp_attachment_image_alt', true);
+                    }
+                    ?>
+
+                    <?php for ($i = 0; $i < count($alternative_bgs['url']); $i++) : ?>
+                        <li><img src="<?php echo esc_url( $alternative_bgs['url'][$i] ); ?>" alt="<?php echo esc_attr( $alternative_bgs['alt'][$i] ); ?>"></li>
+                    <?php endfor; ?>
+
                 <?php endif; ?>
+                </ul>
 
             </div>
         </div>

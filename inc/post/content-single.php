@@ -4,9 +4,9 @@
  *
  * @package    Callie
  * @version    1.0
- * @author     Creative Library <support@devfeels.com>
- * @copyright  Copyright (c) 2018, Creative Library
- * @link       http://devfeels.com/wp/lossless
+ * @author     useCSS <support@devfeels.com>
+ * @copyright  Copyright (c) 2019, useCSS
+ * @link       https://clibrary.pro/callie
  * @license    http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2 or later
  */
 ?>
@@ -64,10 +64,18 @@
                 <?php
                 if ( wp_oembed_get($callie_video) ) :
                     echo wp_oembed_get($callie_video);
-                else :
-                    echo wp_kses_post($callie_video);
-                endif;
-                ?>
+                else : ?>
+                    <div class="video-wrapper">
+                    <?php if ( strpos($callie_video, 'youtube') ) : $sep_url = explode('v=', $callie_video); $video_id = $sep_url[1]; ?>
+                        <iframe src="https://youtube.com/embed/<?php echo esc_attr($video_id); ?>" frameborder="0" allowfulscreen></iframe>
+                    <?php elseif ( explode('vimeo.com/', $callie_video) ) : $sep_url = explode('vimeo.com/', $callie_video); $video_id = $sep_url[1]; ?>
+                        <iframe src="https://player.vimeo.com/video/<?php echo esc_attr($video_id); ?>" frameborder="0" allowfulscreen></iframe>
+                    <?php else : ?>
+                        <h2>Please type video URL without protocol (https:// or http://) and make sure linking is correct.</h2>
+                    <?php endif; ?>
+                    </div>
+
+                <?php endif; ?>
             </div>
             <?php else : ?>
 
@@ -123,6 +131,10 @@
 
     </div>
     <!-- Post Inner / End -->
+
+    <?php if ( false == get_theme_mod( 'hide_post_pagination', false ) ) : get_template_part('inc/single/post_pagination'); endif; ?>
+
+    <?php if ( false == get_theme_mod( 'hide_related_posts', false ) ) : get_template_part('inc/single/related_posts'); endif; ?>
 
     <?php comments_template( '', true ); ?>
     

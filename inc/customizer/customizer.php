@@ -4,9 +4,9 @@
  *
  * @package    Callie
  * @version    1.0
- * @author     CreativeLibrary <creativelibraryemail>
- * @copyright  Copyright (c) 2018, CreativeLibrary
- * @link       demolinkhere
+ * @author     CreativeLibrary <cagriozarpaciii@gmail.com>
+ * @copyright  Copyright (c) 2019, CreativeLibrary
+ * @link       https://clibrary.pro/callie
  * @license    http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2 or later
  */
 
@@ -123,7 +123,7 @@ function callie_customize_register( $wp_customize ) {
     // Single Post Layout
     $wp_customize->add_control('single_sidebar', array(
         'settings'    => 'single_sidebar',
-        'priority'    => 30,
+        'priority'    => 20,
         'section'     => 'layout',
         'label'       => esc_html__( 'Single Post Layout', 'callie' ),
         'type'        => 'select',
@@ -137,9 +137,9 @@ function callie_customize_register( $wp_customize ) {
     // Archive Page Layout
     $wp_customize->add_control('archive_sidebar', array(
         'settings'    => 'archive_sidebar',
-        'priority'    => 50,
+        'priority'    => 30,
         'section'     => 'layout',
-        'label'       => esc_html__( 'Archive Sidebar Layout', 'callie' ),
+        'label'       => esc_html__( 'Archive Page Sidebar Layout', 'callie' ),
         'type'        => 'select',
         'choices'     => array(
             'r_sidebar'    => esc_html__( 'Right Sidebar', 'callie' ),
@@ -152,26 +152,150 @@ function callie_customize_register( $wp_customize ) {
     /* STORY SETTINGS SECTION SETTINGS
     /* ------------------------------------------------ */
 
+    // Hide Story
     $wp_customize->add_setting( 'hide_story', array(
-        'sanitize_callback' => 'callie_sanitize_callback',
+        'sanitize_callback' => 'callie_sanitize_checkbox',
         'type'              => 'theme_mod',
         'default'           => false
+    ) );
+
+    // Story Qty
+    $wp_customize->add_setting( 'story_qty', array(
+        'sanitize_callback' => 'callie_sanitize_number',
+        'type'              => 'theme_mod',
+        'default'           => 6
+    ) );
+
+    // Story Image Duration
+    $wp_customize->add_setting( 'story_img_duration', array(
+        'sanitize_callback' => 'callie_sanitize_number',
+        'type'              => 'theme_mod',
+        'default'           => 3
+    ) );
+
+    // Story Video Duration
+    $wp_customize->add_setting( 'story_video_duration', array(
+        'sanitize_callback' => 'callie_sanitize_number',
+        'type'              => 'theme_mod',
+        'default'           => ''
     ) );
 
     /* ------------------------------------------------ */
     /* STORY SETTINGS SECTION CONTROLS
     /* ------------------------------------------------ */
 
+    // Hide Story
+    $wp_customize->add_control( 'hide_story', array(
+        'settings'    => 'hide_story',
+        'priority'    => 10,
+        'section'     => 'story',
+        'label'       =>  esc_html__( 'Hide Header Stories', 'callie' ),
+        'type'        => 'checkbox'
+    ) );
+
+    // Story Qty
+    $wp_customize->add_control( 'story_qty', array(
+        'settings'    => 'story_qty',
+        'priority'    => 20,
+        'section'     => 'story',
+        'label'       => esc_html__( 'Limit of Story Qty', 'callie' ),
+        'description' => esc_html__( 'Number of stories to show on header area ( default: 6 ).', 'callie' ),
+        'type'        => 'number'
+    ) );
+
+    // Story Image Duration
+    $wp_customize->add_control( 'story_img_duration', array(
+        'settings'    => 'story_img_duration',
+        'priority'    => 30,
+        'section'     => 'story',
+        'label'       => esc_html__( 'Story Image Duration', 'callie' ),
+        'description' => esc_html__( 'Story duration specifically for images ( default: 3 ).', 'callie' ),
+        'type'        => 'number',
+        'input_attrs' => array( 'min' => 1 )
+    ) );
+
+    // Story Video Duration
+    $wp_customize->add_control( 'story_video_duration', array(
+        'settings'    => 'story_video_duration',
+        'priority'    => 40,
+        'section'     => 'story',
+        'label'       => esc_html__( 'Story Video Duration', 'callie' ),
+        'description' => esc_html__( 'Story duration for videos ( default: unset/full ).', 'callie' ),
+        'type'        => 'number',
+        'input_attrs' => array( 'min' => 1 )
+    ) );
+
     /* ------------------------------------------------ */
     /* POST SETTINGS SECTION SETTINGS
     /* ------------------------------------------------ */
 
+    // Use Post Excerpt
+    $wp_customize->add_setting( 'use_excerpt', array(
+        'sanitize_callback' => 'callie_sanitize_checkbox',
+        'type'              => 'theme_mod',
+        'default'           => false
+    ) );
+
+    // Hide Post Images
+    $wp_customize->add_setting( 'hide_post_images', array(
+        'sanitize_callback' => 'callie_sanitize_checkbox',
+        'type'              => 'theme_mod',
+        'default'           => false
+    ) );
+
+    // Hide Post Pagination
+    $wp_customize->add_setting( 'hide_post_pagination', array(
+        'sanitize_callback' => 'callie_sanitize_checkbox',
+        'type'              => 'theme_mod',
+        'default'           => false
+    ) );
+
+    // Hide Related Posts
+    $wp_customize->add_setting( 'hide_related_posts', array(
+        'sanitize_callback' => 'callie_sanitize_checkbox',
+        'type'              => 'theme_mod',
+        'default'           => false
+    ) );
 
     /* ------------------------------------------------ */
     /* POST SETTINGS SECTION CONTROLS
     /* ------------------------------------------------ */
 
+    // Use Post Excerpt
+    $wp_customize->add_control( 'use_excerpt', array(
+        'settings'    => 'use_excerpt',
+        'priority'    => 10,
+        'section'     => 'post',
+        'label'       =>  esc_html__( 'Use Post Excerpt', 'callie' ),
+        'type'        => 'checkbox'
+    ) );
 
+    // Hide Post Images
+    $wp_customize->add_control( 'hide_post_images', array(
+        'settings'    => 'hide_post_images',
+        'priority'    => 20,
+        'section'     => 'post',
+        'label'       =>  esc_html__( 'Hide All Post Images', 'callie' ),
+        'type'        => 'checkbox'
+    ) );
+
+    // Hide Post Pagination
+    $wp_customize->add_control( 'hide_post_pagination', array(
+        'settings'    => 'hide_post_pagination',
+        'priority'    => 30,
+        'section'     => 'post',
+        'label'       =>  esc_html__( 'Hide Post Pagination', 'callie' ),
+        'type'        => 'checkbox'
+    ) );
+
+    // Hide Related Posts
+    $wp_customize->add_control( 'hide_related_posts', array(
+        'settings'    => 'hide_related_posts',
+        'priority'    => 40,
+        'section'     => 'post',
+        'label'       =>  esc_html__( 'Hide Related Posts', 'callie' ),
+        'type'        => 'checkbox'
+    ) );
 
 
     /* ------------------------------------------------ */
@@ -203,7 +327,7 @@ function callie_customize_register( $wp_customize ) {
 
         $wp_customize->add_control( 'social_' . $social, array(
             'settings'    => 'social_' . $social,
-            'priority'    => $priority,
+            'priority'    => $priority1,
             'section'     => 'social_profiles',
             'label'       => $social_name,
             'type'        => 'text'
@@ -228,14 +352,14 @@ function callie_customize_register( $wp_customize ) {
     $priority2 = 10;
     foreach ( $shares as $share => $social_name ) {
         $wp_customize->add_setting( 'share_' . $share, array(
-            'sanitize_callback' => 'callie_sanitize_callback',
+            'sanitize_callback' => 'callie_sanitize_checkbox',
             'type'              => 'theme_mod',
             'default'           => false
         ) );
 
         $wp_customize->add_control( 'share_' . $share, array(
             'settings'    => 'share_' . $share,
-            'priority'    => $priority,
+            'priority'    => $priority2,
             'section'     => 'share_links',
             'label'       => $social_name,
             'type'        => 'checkbox'

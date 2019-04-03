@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying the index.
+ * The archive template file.
  *
  * @package    Callie
  * @version    1.0
@@ -12,6 +12,30 @@
 
 get_header(); ?>
 
+<div class="archive-title-wrap">
+    <div class="container">
+        <div class="title-block">
+            <h4><?php
+            if ( is_category() ) :
+                printf( esc_html__( '%s', 'callie' ), single_cat_title('', false) );
+            elseif ( is_tag() ) :
+                printf( esc_html__( '%s', 'callie' ), single_tag_title('', false) );
+            elseif ( is_author() ) :
+                printf( esc_html__( '%s', 'callie' ), get_the_author() );
+            elseif ( is_day() ) :
+                printf( esc_html__( '%s', 'callie' ), get_the_date() );
+            elseif ( is_month() ) :
+                printf( esc_html__( '%s', 'callie' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'callie' ) ) );
+            elseif ( is_year() ) :
+                printf( esc_html__( '%s', 'callie' ), get_the_date( _x( 'Y', 'yearly archives date format', 'callie' ) ) );
+            else :
+                esc_html_e( 'Archives', 'callie' );
+            endif;
+            ?></h4>
+        </div>
+    </div>
+</div>
+
 <!-- Content
 ================================================== -->
 <div class="content masonry-layout">
@@ -19,7 +43,7 @@ get_header(); ?>
         <div class="content-row">
             
             <!-- Postbar -->
-            <main class="postbar <?php echo esc_attr(callie_content_class()); ?>">
+            <main class="postbar <?php echo esc_attr(callie_archive_content()); ?>">
 
                 <!-- Masonry -->
                 <div class="masonry">
@@ -54,9 +78,9 @@ get_header(); ?>
             <!-- Postbar / End -->
 
             <!-- Sidebar -->
-            <aside class="sidebar <?php echo esc_attr(callie_sidebar_class()); ?>">
+            <aside class="sidebar <?php echo esc_attr(callie_archive_sidebar()); ?>">
 
-               	<?php get_sidebar();?>
+                <?php get_sidebar();?>
 
             </aside>
             <!-- Sidebar / End -->

@@ -26,6 +26,29 @@ jQuery(function($){
         return false;
     });
 
+    // Widget Dropdown Menu
+    $(".widget ul.children, .widget_nav_menu ul ul").parent().addClass("menu-item-has-children");
+    $(".widget_pages ul, .widget_nav_menu ul").find('li.menu-item-has-children > a,.widget_nav_menu ul li.menu-item-has-children > a').each(function () {
+        $(this).on('click', function (e) {
+            e.preventDefault();
+            $(this).parent('li.menu-item-has-children').children('ul').slideToggle();
+
+            // adding class to item container
+            $(this).parent().toggleClass('open');
+
+            return false;
+
+        });
+    });
+
+    // Widget Option Tag Overflow
+    var maxLength=33;
+    $('.widget option').text(function(i,text) {
+        if (text.length>maxLength) {
+            return text.substr(0,maxLength)+'...';
+        }
+    });
+
     /* =========== FitVids =========== */
     $(".post-thumbnail").fitVids();
 
@@ -73,7 +96,7 @@ jQuery(function($){
         smartSpeed:1000,
         dots:false,
         nav:true,
-        navText:["<img src='./resources/icons/prev.svg'>", "<img src='./resources/icons/next.svg'>"]
+        navText:["<img src='../wp-content/themes/callie/assets/icons/prev.svg'>", "<img src='../wp-content/themes/callie/assets/icons/next.svg'>"]
     });
     
     /* You May Also Like Slider */
@@ -87,6 +110,7 @@ jQuery(function($){
         mouseDrag:false,
         animateOut:'slideOutDown',
         animateIn:'slideInDown',
+        autoHeight: true
     });
 
     $('.post-thumbnail.video').magnificPopup({

@@ -4,9 +4,9 @@
  *
  * @package    Callie
  * @version    1.0
- * @author     Creative Library <support@devfeels.com>
- * @copyright  Copyright (c) 2018, Creative Library
- * @link       http://devfeels.com/wp/lossless
+ * @author     useCSS <support@devfeels.com>
+ * @copyright  Copyright (c) 2019, useCSS
+ * @link       https://clibrary.pro/callie
  * @license    http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2 or later
  */
 ?>

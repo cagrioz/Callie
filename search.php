@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying the index.
+ * The search template file.
  *
  * @package    Callie
  * @version    1.0
@@ -12,6 +12,14 @@
 
 get_header(); ?>
 
+<div class="search-title-wrap">
+    <div class="container">
+        <div class="title-block">
+            <h4><?php printf( esc_html__( 'Search Results for: %s', 'callie' ), '<span>' . esc_html( get_search_query() ) . '</span>' ); ?></h4>
+        </div>
+    </div>
+</div>
+
 <!-- Content
 ================================================== -->
 <div class="content masonry-layout">
@@ -19,7 +27,7 @@ get_header(); ?>
         <div class="content-row">
             
             <!-- Postbar -->
-            <main class="postbar <?php echo esc_attr(callie_content_class()); ?>">
+            <main class="postbar <?php echo esc_attr(callie_archive_content()); ?>">
 
                 <!-- Masonry -->
                 <div class="masonry">
@@ -54,9 +62,9 @@ get_header(); ?>
             <!-- Postbar / End -->
 
             <!-- Sidebar -->
-            <aside class="sidebar <?php echo esc_attr(callie_sidebar_class()); ?>">
+            <aside class="sidebar <?php echo esc_attr(callie_archive_sidebar()); ?>">
 
-               	<?php get_sidebar();?>
+                <?php get_sidebar();?>
 
             </aside>
             <!-- Sidebar / End -->

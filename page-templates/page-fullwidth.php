@@ -1,15 +1,8 @@
-<?php
+<?php 
 /**
- * The template file for single post page.
- *
- * @package    Callie
- * @version    1.0
- * @author     useCSS <support@devfeels.com>
- * @copyright  Copyright (c) 2019, useCSS
- * @link       https://clibrary.pro/wp/callie
- * @license    http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2 or later
+ * Template Name: Full Width
+ * Template Post Type: page
  */
-
 get_header(); ?>
 
 <!-- Content
@@ -19,7 +12,7 @@ get_header(); ?>
         <div class="content-row">
             
             <!-- Postbar -->
-            <main class="postbar <?php echo esc_attr(callie_single_content()); ?>">
+            <main class="postbar fullwidth">
                     
                 <?php 
                 if ( have_posts() ) :
@@ -27,7 +20,7 @@ get_header(); ?>
                     // Post Loop
                     while ( have_posts() ) : the_post();
 
-                        get_template_part( 'inc/post/content-single' );
+                        get_template_part( 'inc/page/content-page' );
                             
                     endwhile;
                     
@@ -40,14 +33,6 @@ get_header(); ?>
 
             </main>
             <!-- Postbar / End -->
-
-            <!-- Sidebar -->
-            <aside class="sidebar <?php echo esc_attr(callie_single_sidebar()); ?>">
-
-               	<?php get_sidebar(); ?>
-
-            </aside>
-            <!-- Sidebar / End -->
 
         </div>
     </div>

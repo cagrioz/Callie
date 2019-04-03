@@ -4,9 +4,9 @@
  *
  * @package    Callie
  * @version    1.0
- * @author     Creative Library <support@devfeels.com>
- * @copyright  Copyright (c) 2018, Creative Library
- * @link       http://devfeels.com/wp/lossless
+ * @author     useCSS <support@devfeels.com>
+ * @copyright  Copyright (c) 2019, useCSS
+ * @link       https://clibrary.pro/callie
  * @license    http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2 or later
  */
 
@@ -42,7 +42,10 @@ class Callie_Widget_Story extends WP_Widget {
 		$title    = esc_attr($instance['title']);
 		$post_ids = esc_attr($instance['post_ids']);
 
-		if ( $post_ids ) {
+		$widget_img_duration   = get_theme_mod('story_img_duration', 3);
+        $widget_video_duration = get_theme_mod('story_video_duration', '');
+
+		if ( isset($post_ids) ) {
 
 			$id_arr = explode(",", $post_ids);
 
@@ -73,23 +76,21 @@ class Callie_Widget_Story extends WP_Widget {
 
         			<?php $files = rwmb_meta("callie_story_media"); ?>
 
-        			<?php if ( has_post_thumbnail() ) : ?>
+        			<?php if ( has_post_thumbnail() && $files ) : ?>
 					<!-- Story -->
                     <div class="story-view-item" style="background-image: url( <?php esc_url( the_post_thumbnail_url('callie_story_thumb') ); ?> )">
 
-                        <?php if ($files) : ?>
                         <ul class="media">
 
 							<?php foreach ( $files as $file ) :?>
 								<?php if ($file['fileformat'] !== 'mp4') : ?>
-				                <li data-duration="3"><img src="<?php echo esc_url($file['url']); ?>" alt="<?php echo esc_attr($file['alt']); ?>" /></li>
+				                <li data-duration="<?php echo esc_attr($widget_img_duration); ?>"><img src="<?php echo esc_url($file['url']); ?>" alt="<?php echo esc_attr($file['alt']); ?>" /></li>
 				                <?php else : ?>
-				                <li data-duration="<?php echo $file['length']; ?>"><video src="<?php echo esc_url($file['url']); ?>" controls></video></li>
+				                <li data-duration="<?php if ($widget_video_duration) {echo esc_attr($widget_video_duration);} else {echo esc_attr($file['length']);} ?>"><video src="<?php echo esc_url($file['url']); ?>" controls></video></li>
 				            	<?php endif; ?>
 			                <?php endforeach; ?>
 
                         </ul>
-                        <?php endif; ?>
                         
                     </div>
                     <!-- Story / End -->

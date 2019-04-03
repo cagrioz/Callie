@@ -4,9 +4,9 @@
  *
  * @package    Callie
  * @version    1.0
- * @author     CreativeLibrary <creativelibraryemail>
- * @copyright  Copyright (c) 2018, CreativeLibrary
- * @link       demolinkhere
+ * @author     CreativeLibrary <cagriozarpaciii@gmail.com>
+ * @copyright  Copyright (c) 2019, CreativeLibrary
+ * @link       https://clibrary.pro/callie
  * @license    http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2 or later
  */
 
@@ -182,5 +182,38 @@ if ( ! function_exists('callie_comments') ) {
 				</div>
 			</div>
 	   <?php
+	}
+}
+
+/**
+ * Custom template tags for this theme
+ *
+ * Eventually, some of the functionality here could be replaced by core features.
+ *
+ * @package Callie
+ */
+
+if ( ! function_exists( 'callie_footer_widgets' ) ){
+	function callie_footer_widgets() {
+		$output = '';				
+		// turn on buffering
+		ob_start();
+		
+		for ($i = 1; $i <= 4; $i++) {
+			?>
+			<!-- Footer Column -->
+			<div class="footer-column footer-column-<?php echo $i ?>">
+			<?php
+			if ( is_active_sidebar( 'footer-widget-' . $i ) ) {
+				dynamic_sidebar( 'footer-widget-' . $i );	
+			} 
+			?>
+			</div>
+			<!-- Footer Column / End -->
+			<?php 
+
+		}
+		$output .= ob_get_clean();
+        echo $output;
 	}
 }

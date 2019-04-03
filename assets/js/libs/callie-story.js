@@ -289,7 +289,6 @@ StoryView.prototype.fakeView = function( view, story ) {
     })
   });
 
-  console.log( that.mediaItems )
   content.find( '.media-bars' ).remove();
   content.prepend( bars );
   this.fakeStoryView = view;

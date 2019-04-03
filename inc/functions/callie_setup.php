@@ -4,9 +4,9 @@
  *
  * @package    Callie
  * @version    1.0
- * @author     CreativeLibrary <creativelibraryemail>
- * @copyright  Copyright (c) 2018, CreativeLibrary
- * @link       demolinkhere
+ * @author     CreativeLibrary <cagriozarpaciii@gmail.com>
+ * @copyright  Copyright (c) 2019, CreativeLibrary
+ * @link       https://clibrary.pro/callie
  * @license    http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2 or later
  */
 
@@ -48,7 +48,7 @@ if ( ! function_exists( 'callie_setup' ) ) :
 		 */
 		add_image_size( 'callie_story_thumb', 69, 69, true );
 		add_image_size( 'callie_widget_post', 200, 200, true );
-		add_image_size( 'callie_thumb', 500, 500, true );
+		add_image_size( 'callie_thumb', 532, 532, true );
 
 		/**
 		 * Custom Backgrounds
@@ -95,7 +95,7 @@ if ( ! function_exists( 'callie_setup' ) ) :
 		/*
 		 * Add Editor Style
 		 */
-
+		add_editor_style( array( 'assets/css/editor-style.css', callie_fonts_url() ) );
 	}
 endif;
 add_action( 'after_setup_theme', 'callie_setup' );
@@ -118,7 +118,7 @@ if ( ! function_exists( 'callie_fonts_url' ) ) :
 
 		/* translators: If there are characters in your language that are not supported by Lato, translate this to 'off'. Do not translate into your own language. */
 		if ( 'off' !== _x( 'on', 'Lato font: on or off', 'callie' ) ) {
-			$fonts[] = 'Lato:700';
+			$fonts[] = 'Lato:400,700';
 		}
 
 		/* translators: If there are characters in your language that are not supported by Playfair Display, translate this to 'off'. Do not translate into your own language. */
@@ -164,6 +164,18 @@ if ( function_exists('register_sidebar') ) {
 		'after_title'   => '</h4></div>',
 	));
 
+	for ($i = 1; $i <= 4; $i++) {
+		register_sidebar( array(
+			'name'          => sprintf( esc_html__( 'Footer Column %s', 'callie' ), $i ),
+			'id'            => 'footer-widget-' . $i,
+			'description'   => esc_html__( 'Add widgets here.', 'callie' ),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<div class="widget-title"><h4>',
+	        'after_title'   => '</h4></div>',
+		) );
+	}
+
 }
 
 if ( ! function_exists( 'callie_load_scripts' ) ) :
@@ -185,8 +197,8 @@ if ( ! function_exists( 'callie_load_scripts' ) ) :
 		wp_enqueue_style( 'callie_font_awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css', array(), '4.7.0' );
 		wp_enqueue_style( 'callie_owl', get_template_directory_uri() . '/assets/css/owl.carousel.min.css', array(), '2.3.4' );
 		wp_enqueue_style( 'callie_magnific', get_template_directory_uri() . '/assets/css/magnific-popup.min.css', array(), '1.1.0' );
-		wp_enqueue_style( 'callie_responsive', get_template_directory_uri() . '/assets/css/responsive.css', array(), CALLIE_VERSION );
 		wp_enqueue_style( 'callie_style', get_template_directory_uri() . '/style.css', array(), CALLIE_VERSION );
+		wp_enqueue_style( 'callie_responsive', get_template_directory_uri() . '/assets/css/responsive.css', array(), CALLIE_VERSION );
 
 		/**
 		 * Load scripts
