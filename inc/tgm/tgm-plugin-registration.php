@@ -64,6 +64,12 @@ function callie_register_required_plugins() {
 			'required' => true,
 		),
 		array(
+			'name'     => esc_html__( 'Callie Addons', 'callie' ),
+			'slug'     => 'callie-addons',
+			'source'   => 'http://clibrary.pro/plugins/callie/callie-addons-1.0.zip',
+			'required' => true,
+		),
+		array(
             'name'     => esc_html__( 'JQuery Updater', 'callie' ),
             'slug'     => 'jquery-updater',
             'required' => true,

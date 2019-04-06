@@ -1,10 +1,10 @@
 /*!
 Theme Name: Callie
-Theme URI: https://clibrary.pro/wp/callie
-Author: CreativeLibrary
-Author URI: http://themeforest.net/user/creativelibrary
+Theme URI: https://clibrary.pro/callie
+Author: useCSS
+Author URI: http://themeforest.net/user/usecss
 Tags: one-column, two-columns, right-sidebar, custom-background, custom-colors, custom-menu, editor-style, featured-images, flexible-header, post-formats, sticky-post, threaded-comments
-Description: A Personal Blog WordPress Theme
+Description: A Premium Story WordPress Theme
 Version: 1.0.0
 License: Themeforest Licence
 License URI: http://themeforest.net/licenses/
@@ -613,7 +613,6 @@ textarea { resize:vertical; }
     display: block;
     width: 100%;
     float: left;
-    margin-bottom: 10px;
 }
 
 .form-control { width:100%; }
@@ -1001,7 +1000,7 @@ input:focus, textarea:focus {
 }
 
 .post .post-thumbnail { 
-    margin-bottom: 32px;
+    margin-bottom: 45px;
     position: relative;
 }
 
@@ -1081,7 +1080,7 @@ input:focus, textarea:focus {
     width: 60px;
     border-radius: 100%;
     background-color: #f6ddd6;
-    margin: 85px 0 20px;
+    margin: 85px 0 0;
 }
 
 .callie_loadmore:before {
@@ -1467,12 +1466,20 @@ input:focus, textarea:focus {
 }
 
 /* =============== Single Page Styles =============== */
+.post-comments {
+    float: left;
+    width: 100%;
+    display: block;
+}
+
 .post-inner,
 .post-navigation,
 .post-comments,
 .related-posts {
     margin-bottom: 42px;
 }
+
+.post > *:last-child { margin-bottom:0; }
 
 .post, .post-header, .post-thumbnail { position:relative; }
 
@@ -1485,7 +1492,7 @@ input:focus, textarea:focus {
 .post-inner {
     background-color: #fff;
     position: relative;
-    padding: 30px 0;
+    padding: 45px 0;
 }
 
 .post-header,
@@ -1885,6 +1892,11 @@ input:focus, textarea:focus {
     padding: 48px 0;
     margin-top: 85px;
 }
+.single .footer,
+.page .footer {
+    margin-top: 42px;
+}
+.normal-page .footer { margin-top:85px; }
 
 .footer-column {
     width: 25%;
@@ -1940,29 +1952,30 @@ input:focus, textarea:focus {
     width: 80%;
 }
 
+/* =============== Sub Pages =============== */
 .archive-title-wrap,
 .search-title-wrap {
     float: left;
     width: 100%;
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 42px;
 }
 
-/* =============== Sub Pages =============== */
 .archive-title-wrap h4,
 .search-title-wrap h4 {
-    padding: 30px 50px;
-    background: #fff;
-    color: #3b3b3b;
-    letter-spacing: .7px;
-    word-spacing: 2px;
+    padding: 30px 0;
+    color: #141615;
+    letter-spacing: .3px;
+    word-spacing: 1.2px;
     font-size: 20px;
     position: relative;
     display: inline-block;
     margin-bottom: 0;
 }
 
-.search-title-wrap .title-block {
+.search-title-wrap .title-block,
+.archive-title-wrap .title-block {
     display: block;
-    background: #fcf4f2;
+    background: #fff;
+    border: 15px solid #fcf4f2;
 }

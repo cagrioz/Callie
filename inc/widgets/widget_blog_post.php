@@ -4,7 +4,7 @@
  *
  * @package    Callie
  * @version    1.0
- * @author     useCSS <support@devfeels.com>
+ * @author     useCSS <cagriozarpaciii@gmail.com>
  * @copyright  Copyright (c) 2019, useCSS
  * @link       https://clibrary.pro/callie
  * @license    http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2 or later
@@ -118,19 +118,19 @@ class Callie_Widget_Blog_Post extends WP_Widget {
  		$defaults = array( 'title' => '', 'post_id' => '', 'hide_thumb' => 'off' );
  		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
  		<p>
- 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e('Title:','callie');?></label>
- 			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>"  />
+ 			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e('Title:','callie');?></label>
+ 			<input type="text" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>"  />
  		</p>
  		<p>
- 			<label for="<?php echo $this->get_field_id( 'post_id' ); ?>"><?php esc_html_e('Post ID:', 'callie'); ?></label>
- 			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'post_id' ); ?>" name="<?php echo $this->get_field_name( 'post_id' ); ?>" value="<?php echo $instance['post_id']; ?>" size="3" />
+ 			<label for="<?php echo esc_attr( $this->get_field_id( 'post_id' ) ); ?>"><?php esc_html_e('Post ID:', 'callie'); ?></label>
+ 			<input type="text" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'post_id' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'post_id' ) ); ?>" value="<?php echo esc_attr( $instance['post_id'] ); ?>" size="3" />
  			<label class="description">
 				<?php esc_html_e( 'You can learn it on edit post page\'s URL for ex. post.php?post=42 . 42 is the ID in that case.', 'callie' );?>
 			</label>
  		</p>
  		<p>
- 			<label for="<?php echo $this->get_field_id( 'hide_thumb' ); ?>"><?php esc_html_e('Hide Thumbnail Image:', 'callie'); ?></label>
- 			<input type="checkbox" class="checkbox" <?php checked( $instance[ 'hide_thumb' ], 'on' ); ?> id="<?php echo $this->get_field_id( 'hide_thumb' ); ?>" name="<?php echo $this->get_field_name( 'hide_thumb' ); ?>" value="off" size="3" />
+ 			<label for="<?php echo esc_attr( $this->get_field_id( 'hide_thumb' ) ); ?>"><?php esc_html_e('Hide Thumbnail Image:', 'callie'); ?></label>
+ 			<input type="checkbox" class="checkbox" <?php checked( $instance[ 'hide_thumb' ], 'on' ); ?> id="<?php echo esc_attr( $this->get_field_id( 'hide_thumb' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'hide_thumb' ) ); ?>" value="off" size="3" />
  		</p>
 	<?php
 	}

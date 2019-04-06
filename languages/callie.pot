@@ -892,7 +892,7 @@ msgid "Callie"
 msgstr ""
 
 #. Theme URI of the plugin/theme
-msgid "https://clibrary.pro/wp/callie"
+msgid "https://clibrary.pro/callie"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -900,9 +900,9 @@ msgid "A Personal Blog WordPress Theme"
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "CreativeLibrary"
+msgid "useCSS"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "http://themeforest.net/user/creativelibrary"
+msgid "http://themeforest.net/user/usecss"
 msgstr ""

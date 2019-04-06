@@ -4,8 +4,8 @@
  *
  * @package    Callie
  * @version    1.0
- * @author     CreativeLibrary <cagriozarpaciii@gmail.com>
- * @copyright  Copyright (c) 2019, CreativeLibrary
+ * @author     useCSS <cagriozarpaciii@gmail.com>
+ * @copyright  Copyright (c) 2019, useCSS
  * @link       https://clibrary.pro/callie
  * @license    http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2 or later
  */
@@ -142,41 +142,48 @@ endif;
  *
  * @since 1.0
  */
-if ( function_exists('register_sidebar') ) {
+if ( ! function_exists('callie_register_sidebars') ) {
+	function callie_register_sidebars() {
 
-	register_sidebar(array(
-		'name'          => esc_html__( 'Sidebar', 'callie' ),
-		'id'            => 'sidebar-primary',
-		'description'   => esc_html__( 'Add widgets here to appear in your sidebar.', 'callie' ),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<div class="widget-title"><h4>',
-		'after_title'   => '</h4></div>',
-	));
+		if ( function_exists('register_sidebar') ) {
 
-	register_sidebar(array(
-		'name'          => esc_html__( 'Page Sidebar', 'callie' ),
-		'id'            => 'sidebar-pages',
-		'description'   => esc_html__( 'Add widgets here to appear in your page sidebar.', 'callie' ),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<div class="widget-title"><h4>',
-		'after_title'   => '</h4></div>',
-	));
+			register_sidebar(array(
+				'name'          => esc_html__( 'Sidebar', 'callie' ),
+				'id'            => 'sidebar-primary',
+				'description'   => esc_html__( 'Add widgets here to appear in your sidebar.', 'callie' ),
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<div class="widget-title"><h4>',
+				'after_title'   => '</h4></div>',
+			));
 
-	for ($i = 1; $i <= 4; $i++) {
-		register_sidebar( array(
-			'name'          => sprintf( esc_html__( 'Footer Column %s', 'callie' ), $i ),
-			'id'            => 'footer-widget-' . $i,
-			'description'   => esc_html__( 'Add widgets here.', 'callie' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</div>',
-			'before_title'  => '<div class="widget-title"><h4>',
-	        'after_title'   => '</h4></div>',
-		) );
+			register_sidebar(array(
+				'name'          => esc_html__( 'Page Sidebar', 'callie' ),
+				'id'            => 'sidebar-pages',
+				'description'   => esc_html__( 'Add widgets here to appear in your page sidebar.', 'callie' ),
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<div class="widget-title"><h4>',
+				'after_title'   => '</h4></div>',
+			));
+
+			for ($i = 1; $i <= 4; $i++) {
+				register_sidebar( array(
+					'name'          => sprintf( esc_html__( 'Footer Column %s', 'callie' ), $i ),
+					'id'            => 'footer-widget-' . $i,
+					'description'   => esc_html__( 'Add widgets here.', 'callie' ),
+					'before_widget' => '<div id="%1$s" class="widget %2$s">',
+					'after_widget'  => '</div>',
+					'before_title'  => '<div class="widget-title"><h4>',
+			        'after_title'   => '</h4></div>',
+				) );
+			}
+
+		}
+
 	}
-
 }
+add_action('widgets_init', 'callie_register_sidebars');
 
 if ( ! function_exists( 'callie_load_scripts' ) ) :
 	/**

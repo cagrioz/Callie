@@ -27,7 +27,7 @@
             <div class="container">
                 
                 <!-- Logo -->
-                <div class="logo">
+                <div class="logo" itemscope itemtype="http://schema.org/WebPage">
                 <?php if ( has_custom_logo() ) : ?>
                     <?php the_custom_logo(); ?>
                 <?php else : ?>
@@ -74,7 +74,7 @@
             <div class="mobile-menu-header">
                 
                 <!-- Mobile Logo -->
-                <div class="mobile-logo">
+                <div class="mobile-logo" itemscope itemtype="http://schema.org/WebPage">
                     <?php if ( has_custom_logo() ) : ?>
                         <?php the_custom_logo(); ?>
                     <?php else : ?>

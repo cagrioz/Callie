@@ -4,8 +4,8 @@
  *
  * @package    Callie
  * @version    1.0
- * @author     CreativeLibrary <cagriozarpaciii@gmail.com>
- * @copyright  Copyright (c) 2019, CreativeLibrary
+ * @author     useCSS <cagriozarpaciii@gmail.com>
+ * @copyright  Copyright (c) 2019, useCSS
  * @link       https://clibrary.pro/callie
  * @license    http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2 or later
  */
@@ -32,11 +32,3 @@ include get_template_directory() . '/inc/tgm/tgm-plugin-registration.php';
  * Metabox
  */
 include get_template_directory() . '/inc/metabox/callie_metaboxes.php';
-
-/**
- * Widgets
- */
-include get_template_directory() . '/inc/widgets/widget_social_icons.php';
-include get_template_directory() . '/inc/widgets/widget_blog_post.php';
-include get_template_directory() . '/inc/widgets/widget_twitter.php';
-include get_template_directory() . '/inc/widgets/widget_story.php';

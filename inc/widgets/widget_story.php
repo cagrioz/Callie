@@ -1,10 +1,10 @@
 <?php
 /**
- * Widget : Blog Post
+ * Widget : Story
  *
  * @package    Callie
  * @version    1.0
- * @author     useCSS <support@devfeels.com>
+ * @author     useCSS <cagriozarpaciii@gmail.com>
  * @copyright  Copyright (c) 2019, useCSS
  * @link       https://clibrary.pro/callie
  * @license    http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2 or later
@@ -82,13 +82,19 @@ class Callie_Widget_Story extends WP_Widget {
 
                         <ul class="media">
 
-							<?php foreach ( $files as $file ) :?>
-								<?php if ($file['fileformat'] !== 'mp4') : ?>
-				                <li data-duration="<?php echo esc_attr($widget_img_duration); ?>"><img src="<?php echo esc_url($file['url']); ?>" alt="<?php echo esc_attr($file['alt']); ?>" /></li>
-				                <?php else : ?>
-				                <li data-duration="<?php if ($widget_video_duration) {echo esc_attr($widget_video_duration);} else {echo esc_attr($file['length']);} ?>"><video src="<?php echo esc_url($file['url']); ?>" controls></video></li>
-				            	<?php endif; ?>
-			                <?php endforeach; ?>
+			                <?php foreach ( $files as $file ) : ?>
+
+                            <?php if (isset($file['fileformat'])) : ?>
+                                <?php if ($file['fileformat'] == 'mp4') : ?>
+                                    <li data-duration="<?php if ($widget_video_duration) {echo esc_attr($widget_video_duration);} else {echo esc_attr($file['length']);} ?>"><video src="<?php echo esc_url($file['url']); ?>" controls></video></li>
+                                <?php else : ?>
+                                    <li data-duration="3"><h3>MP4 fileformat is only allowed in story.</h3></li>
+                                <?php endif; ?>
+                            <?php else : ?>
+                                <li data-duration="<?php echo esc_attr($widget_img_duration); ?>"><img src="<?php echo esc_url($file['url']); ?>" alt="<?php echo bloginfo('name'); ?> Story" /></li>
+                            <?php endif; ?>
+
+                            <?php endforeach; ?>
 
                         </ul>
                         
@@ -143,12 +149,12 @@ class Callie_Widget_Story extends WP_Widget {
  		$defaults = array( 'title' => '', 'post_ids' => '' );
  		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
  		<p>
- 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e('Title:','callie');?></label>
- 			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>"  />
+ 			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e('Title:','callie');?></label>
+ 			<input type="text" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>"  />
  		</p>
  		<p>
- 			<label for="<?php echo $this->get_field_id( 'post_ids' ); ?>"><?php esc_html_e('Post IDs:', 'callie'); ?></label>
- 			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'post_ids' ); ?>" name="<?php echo $this->get_field_name( 'post_ids' ); ?>" value="<?php echo $instance['post_ids']; ?>" size="3" />
+ 			<label for="<?php echo esc_attr( $this->get_field_id( 'post_ids' ) ); ?>"><?php esc_html_e('Post IDs:', 'callie'); ?></label>
+ 			<input type="text" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'post_ids' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'post_ids' ) ); ?>" value="<?php echo esc_attr( $instance['post_ids'] ); ?>" size="3" />
  			<label class="description">
 				<?php esc_html_e( 'Type IDs of story posts and seperate it with commas. ex. 8,15,24,35,42 . Please enter more than 3 ID here for get proper results.', 'callie' );?>
 			</label>
