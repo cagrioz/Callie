@@ -229,13 +229,6 @@ function callie_customize_register( $wp_customize ) {
     /* POST SETTINGS SECTION SETTINGS
     /* ------------------------------------------------ */
 
-    // Use Post Excerpt
-    $wp_customize->add_setting( 'use_excerpt', array(
-        'sanitize_callback' => 'callie_sanitize_checkbox',
-        'type'              => 'theme_mod',
-        'default'           => false
-    ) );
-
     // Hide Post Images
     $wp_customize->add_setting( 'hide_post_images', array(
         'sanitize_callback' => 'callie_sanitize_checkbox',
@@ -261,19 +254,10 @@ function callie_customize_register( $wp_customize ) {
     /* POST SETTINGS SECTION CONTROLS
     /* ------------------------------------------------ */
 
-    // Use Post Excerpt
-    $wp_customize->add_control( 'use_excerpt', array(
-        'settings'    => 'use_excerpt',
-        'priority'    => 10,
-        'section'     => 'post',
-        'label'       =>  esc_html__( 'Use Post Excerpt', 'callie' ),
-        'type'        => 'checkbox'
-    ) );
-
     // Hide Post Images
     $wp_customize->add_control( 'hide_post_images', array(
         'settings'    => 'hide_post_images',
-        'priority'    => 20,
+        'priority'    => 10,
         'section'     => 'post',
         'label'       =>  esc_html__( 'Hide All Post Images', 'callie' ),
         'type'        => 'checkbox'
@@ -282,7 +266,7 @@ function callie_customize_register( $wp_customize ) {
     // Hide Post Pagination
     $wp_customize->add_control( 'hide_post_pagination', array(
         'settings'    => 'hide_post_pagination',
-        'priority'    => 30,
+        'priority'    => 20,
         'section'     => 'post',
         'label'       =>  esc_html__( 'Hide Post Pagination', 'callie' ),
         'type'        => 'checkbox'
@@ -291,7 +275,7 @@ function callie_customize_register( $wp_customize ) {
     // Hide Related Posts
     $wp_customize->add_control( 'hide_related_posts', array(
         'settings'    => 'hide_related_posts',
-        'priority'    => 40,
+        'priority'    => 30,
         'section'     => 'post',
         'label'       =>  esc_html__( 'Hide Related Posts', 'callie' ),
         'type'        => 'checkbox'

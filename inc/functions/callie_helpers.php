@@ -185,6 +185,79 @@ if ( ! function_exists('callie_comments') ) {
 	}
 }
 
+if ( !function_exists( 'callie_allowed_html_tags' ) ) {
+  /**
+   * Allowed html tags for wp_kses() function
+   *
+   * @return array Array of allowed html tags.
+   */
+  function callie_allowed_html_tags() {
+    return array(
+      'a' => array(
+        'href' => array(),
+        'title' => array(),
+        'class' => array(),
+        'data' => array(),
+        'rel'   => array()
+      ),
+      'i' => array(
+        'class' => array(),
+        'title' => array(),
+        'rel'   => array()
+      ),
+      'img' => array(
+        'src' => array(),
+        'height' => array(),
+        'width' => array(),
+        'alt' => array(),
+        'class' => array(),
+        'title'   => array()
+      ),
+      'p' => array(
+      	'class' => array()
+      ),
+      'br' => array(),
+      'em' => array(),
+      'ul' => array(
+          'class' => array()
+      ),
+      'ol' => array(
+          'class' => array()
+      ),
+      'li' => array(
+          'class' => array()
+      ),
+      'strong' => array(),
+      'div' => array(
+        'class' => array(),
+        'data' => array(),
+        'style' => array()
+      ),
+      'span' => array(
+        'class' => array(),
+        'style' => array()
+      ),
+      'img' => array(
+          'alt'    => array(),
+          'class'  => array(),
+          'height' => array(),
+          'src'    => array(),
+          'width'  => array()
+      ),
+      'select' => array(
+          'id'   => array(),
+          'class' => array(),
+          'name' => array()
+      ),
+      'option' => array(
+          'value' => array(),
+          'selected' => array()
+      ),
+    );
+
+  }
+}
+
 /**
  * Custom template tags for this theme
  *
@@ -195,14 +268,15 @@ if ( ! function_exists('callie_comments') ) {
 
 if ( ! function_exists( 'callie_footer_widgets' ) ){
 	function callie_footer_widgets() {
-		$output = '';				
+		$output = '';
+		$allowed_html = callie_allowed_html_tags();			
 		// turn on buffering
 		ob_start();
 		
 		for ($i = 1; $i <= 4; $i++) {
 			?>
 			<!-- Footer Column -->
-			<div class="footer-column footer-column-<?php echo esc_attr( $i ); ?>">
+			<div class="footer-column footer-column-<?php echo esc_attr($i); ?>">
 			<?php
 			if ( is_active_sidebar( 'footer-widget-' . $i ) ) {
 				dynamic_sidebar( 'footer-widget-' . $i );	
@@ -214,6 +288,6 @@ if ( ! function_exists( 'callie_footer_widgets' ) ){
 
 		}
 		$output .= ob_get_clean();
-        echo $output;
+        echo wp_kses($output, $allowed_html);
 	}
 }

@@ -777,7 +777,8 @@ input:focus, textarea:focus {
 	margin-left: 32px;
 }
 
-.header .logo img { height:42px; }
+.header .logo img { height:42px; max-width:164px; }
+.widget .logo { height:42px!important; max-width:164px!important; }
 .header .logo h1 { line-height:136px; }
 
 .header .navigation * li {

@@ -46,7 +46,7 @@ if ( ! function_exists( 'callie_setup' ) ) :
 		/**
 		 * Add image size
 		 */
-		add_image_size( 'callie_story_thumb', 69, 69, true );
+		add_image_size( 'callie_story_thumb', 138, 138, true );
 		add_image_size( 'callie_widget_post', 200, 200, true );
 		add_image_size( 'callie_thumb', 532, 532, true );
 
@@ -215,7 +215,7 @@ if ( ! function_exists( 'callie_load_scripts' ) ) :
 		wp_enqueue_script( 'callie_owl', get_template_directory_uri() . '/assets/js/libs/owl.carousel.min.js', array('jquery'), '2.3.4', true );
 		wp_enqueue_script( 'callie_fitvids', get_template_directory_uri() . '/assets/js/libs/fitvids.js', array(), '1.1.0', true );
 		wp_enqueue_script( 'masonry' );
-		wp_enqueue_script( 'callie_script', get_template_directory_uri() . '/assets/js/callie.js', array('jquery'), CALLIE_VERSION, true );
+		wp_enqueue_script( 'callie_script', get_template_directory_uri() . '/assets/js/callie.js', array('jquery', 'masonry'), CALLIE_VERSION, true );
 
 		if ( is_singular() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
@@ -232,7 +232,7 @@ function callie_my_load_more_scripts() {
 	wp_enqueue_script('jquery');
  
 	// register our main script but do not enqueue it yet
-	wp_register_script( 'callie_loadmore', get_stylesheet_directory_uri() . '/callieloadmore.js', array('jquery', 'masonry' ) );
+	wp_register_script( 'callie_loadmore', get_stylesheet_directory_uri() . '/callieloadmore.js', array('jquery', 'masonry') );
  
 	// now the most interesting part
 	// we have to pass parameters to callieloadmore.js script but we can get the parameters values only in PHP

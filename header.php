@@ -125,7 +125,7 @@
         $images = [];
         ?>
 
-        <?php if ( !$story_hide && $query->have_posts() ) : ?>
+        <?php if ( !$story_hide && $query->have_posts() && function_exists('rwmb_meta') ) : ?>
         <!-- Stories
         ================================================== -->
         <div class="stories">

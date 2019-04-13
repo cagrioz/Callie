@@ -41,7 +41,7 @@
 
         <?php 
         // Gallery Post Format
-        if ( has_post_format('gallery') ) : ?>
+        if ( has_post_format('gallery') && function_exists('rwmb_meta') ) : ?>
 
             <?php $images = rwmb_meta("callie_gallery_format", "type=image&size=callie_thumb"); ?>
             <div class="post-thumbnail gallery owl-carousel">

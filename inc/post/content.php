@@ -80,20 +80,24 @@
         <h1><a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo esc_attr( get_the_title() ); ?></a></h1>
     </div>
 
+    <?php if ( function_exists('rwmb_meta') ) : ?>
+
     <?php if ( !rwmb_meta( 'callie_hide_excerpt' ) ) : ?>    
     <div class="post-text">
-        
-        <?php if ( get_theme_mod('use_excerpt', false) ) : ?>
 
-            <p class="post-excerpt"><?php echo callie_limit_words(get_the_excerpt(), 26); ?></p>
-
-        <?php else : ?>
-
-            <?php the_content(' '); ?>
-
-        <?php endif; ?>
+        <p class="post-excerpt"><?php echo callie_limit_words(get_the_excerpt(), 26); ?></p>
 
     </div>
+    <?php endif; ?>
+
+    <?php else : ?>
+
+    <div class="post-text">
+    
+        <p class="post-excerpt"><?php echo callie_limit_words(get_the_excerpt(), 26); ?></p>
+    
+    </div>
+
     <?php endif; ?>
 
     <a class="read-more" href="standard-post.html"><img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/icons/next.svg' ); ?>" alt="read more"></a>
