@@ -19,9 +19,9 @@ if ( ! isset( $content_width ) ) {
 /**
  * Includes
  */
-include get_template_directory() . '/inc/functions/callie_setup.php';
-include get_template_directory() . '/inc/functions/callie_filters.php';
-include get_template_directory() . '/inc/functions/callie_helpers.php';
+include get_template_directory() . '/inc/functions/callie-setup.php';
+include get_template_directory() . '/inc/functions/callie-filters.php';
+include get_template_directory() . '/inc/functions/callie-helpers.php';
 
 require get_template_directory() . '/inc/customizer/customizer.php';
 require get_template_directory() . '/inc/customizer/custom-styles.php';
@@ -31,4 +31,4 @@ include get_template_directory() . '/inc/tgm/tgm-plugin-registration.php';
 /**
  * Metabox
  */
-include get_template_directory() . '/inc/metabox/callie_metaboxes.php';
+include get_template_directory() . '/inc/metabox/callie-metaboxes.php';

@@ -1,4 +1,4 @@
-jQuery(function($){
+(function($) {
 
     "use strict";
     
@@ -132,15 +132,18 @@ jQuery(function($){
         srcAction: 'iframe_src', 
     });
 
-    // Story Setup
-    var storyView = new StoryView({
-        view: document.querySelector('.stories'),
-        autoClose: true
-    });
+    var jqueryVersion = parseFloat(window.jQuery.fn.jquery);
 
-    var storyWidgetView = new StoryView({
-        view: document.querySelector('.story-widget-carousel'),
-        autoClose: true
-    });
-    
-}); /*=== Document.Ready Ends Here ===*/
+    if ( jqueryVersion > 2 ) {
+        var storyView = new StoryView({
+            view: document.querySelector('.stories'),
+            autoClose: true
+        });
+
+        var storyWidgetView = new StoryView({
+            view: document.querySelector('.story-widget-carousel'),
+            autoClose: true
+        });
+    }
+
+}(window.jQuery)); /*=== Document.Ready Ends Here ===*/

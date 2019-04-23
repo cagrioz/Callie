@@ -826,9 +826,6 @@ input:focus, textarea:focus {
     margin: 0;
     display: block;
     width: 100%;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    word-break: break-all;
     position: relative;
     text-align: left;
 }
@@ -840,12 +837,12 @@ input:focus, textarea:focus {
 
 .header .navigation ul ul a {
     display: block;
-    padding: 17px!important;
+    padding: 16px!important;
 }
 
 .header .navigation ul ul,
 .header .navigation ul ul a {
-    line-height: 18px!important;
+    line-height: 20px!important;
 }
 
 .navigation ul ul a:hover { 
@@ -1001,7 +998,7 @@ input:focus, textarea:focus {
 }
 
 .post .post-thumbnail { 
-    margin-bottom: 45px;
+    margin-bottom: 31px;
     position: relative;
 }
 
@@ -1380,6 +1377,7 @@ input:focus, textarea:focus {
 .widget_calendar th,
 .widget_calendar td {
     cursor: pointer;
+    background-color: #fff;
 }
 
 .widget_calendar td {
@@ -1402,6 +1400,10 @@ input:focus, textarea:focus {
     display: block;
     width: 100%;
     margin-top: 10px;
+}
+
+.footer .search-submit {
+    background-color: #f9e8e4;
 }
 
 /* Widget > Tag Cloud */
@@ -1494,7 +1496,18 @@ input:focus, textarea:focus {
     background-color: #fff;
     position: relative;
     padding: 45px 0;
+    float: left;
+    width: 100%;
+    display: block;
 }
+
+.post-footer, 
+.post-text {
+    display: block;
+    width: 100%;
+}
+
+.post-text { float:left; }
 
 .post-header,
 .post .post-thumbnail,
@@ -1504,10 +1517,7 @@ input:focus, textarea:focus {
     padding: 0 53px;
 }
 
-.post-text img {
-    display: block;
-    margin: 4px 0 32px;
-}
+.post-text img { display:block; }
 
 .post-text > *:last-child { margin-bottom:0!important; }
 
@@ -1663,6 +1673,11 @@ input:focus, textarea:focus {
     position: relative;
     right: -23px;
     top: -11px;
+}
+
+.post-navigation .post-title h3,
+.related-post-content h4 a {
+    word-wrap: break-word;
 }
 
 /* ------- Related Posts ------- */
@@ -1926,7 +1941,7 @@ input:focus, textarea:focus {
     background-color: #333;
     height: 1px;
     width: 20px;
-    margin: 8px auto;
+    margin: 8px auto 20px;
 }
 
 /* =============== 404 Page =============== */

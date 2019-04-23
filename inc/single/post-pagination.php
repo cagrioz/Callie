@@ -28,7 +28,7 @@
                 <div class="post-navigation-inner">
 
                     <?php the_title( sprintf( '<div class="post-title"><h3>', esc_url( get_permalink() ) ), '</h3></div>' ); ?>
-                    <img src="<?php echo esc_url( get_template_directory_uri() .'/assets/icons/prev.svg' ); ?>" alt="prev post">
+                    <img src="<?php echo esc_url( get_template_directory_uri() .'/assets/icons/prev.svg' ); ?>" alt="<?php echo esc_attr__( bloginfo('name') . ' prev post', 'callie'); ?>">
 
                 </div>
             </div>
@@ -55,7 +55,7 @@
                 <div class="post-navigation-inner">
 
                     <?php the_title( sprintf( '<div class="post-title"><h3>', esc_url( get_permalink() ) ), '</h3></div>' ); ?>
-                    <img src="<?php echo esc_url( get_template_directory_uri() .'/assets/icons/next.svg' ); ?>" alt="next post">
+                    <img src="<?php echo esc_url( get_template_directory_uri() .'/assets/icons/next.svg' ); ?>" alt="<?php echo esc_attr__( bloginfo('name') . ' next post', 'callie'); ?>">
 
                 </div>
             </div>

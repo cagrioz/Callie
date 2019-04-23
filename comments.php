@@ -52,23 +52,23 @@
 		'title_reply_to'       => esc_html__( 'Leave a Comment to %s'  ,'callie'),
 		'cancel_reply_link'    => esc_html__( 'Cancel Comment'  ,'callie'),
 		'must_log_in'          => '<p class="must-log-in">' .  wp_kses_post(sprintf( __( 'You must be <a href="%s">logged in</a> to post a comment.' ,'callie' ), wp_login_url( apply_filters( 'the_permalink', get_permalink( ) ) ) )) . '</p>',
-		'logged_in_as'         => '<p class="logged-in-as">' . wp_kses_post(sprintf( __( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>'  ,'callie'), admin_url( 'profile.php' ), $user_identity, wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) ) ) ). '</p>',
+		'logged_in_as'         => '<p class="logged-in-as">' . wp_kses_post(sprintf( __( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="' . esc_attr__('Log out of this account', 'callie') .  '">Log out?</a>'  ,'callie'), admin_url( 'profile.php' ), $user_identity, wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) ) ) ). '</p>',
 		'comment_notes_before' => '',
 		'comment_notes_after'  => '',
         'comment_field' => '
 			<div class="col12 formitem">
-        		<textarea name="comment" placeholder="'.esc_html__('Comment','callie').'"  id="text" class="form-control" rows="10"  maxlength="400" aria-required="true"></textarea>
+        		<textarea name="comment" placeholder="'.esc_attr__('Comment','callie').'"  id="text" class="form-control" rows="10"  maxlength="400" aria-required="true"></textarea>
         	</div>',
 		'fields' => apply_filters( 'comment_form_default_fields',
 		  array(
 			'author' => '
 				<div class="col6 formitem">
-					<input type="text" placeholder="'.esc_html__('Name','callie').'" name="author" id="name" class="form-control" maxlength="100" aria-required="true">
+					<input type="text" placeholder="'.esc_attr__('Name','callie').'" name="author" id="name" class="form-control" maxlength="100" aria-required="true">
 				</div>',
 
 			'email' => '
 				<div class="col6 formitem">
-					<input type="email" placeholder="'.esc_html__('Email','callie').'" name="email" id="email" class="form-control" maxlength="100" aria-required="true">
+					<input type="email" placeholder="'.esc_attr__('Email','callie').'" name="email" id="email" class="form-control" maxlength="100" aria-required="true">
 				</div>'
 		  )
 		)

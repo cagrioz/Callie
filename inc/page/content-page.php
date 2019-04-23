@@ -71,4 +71,6 @@
     </div>
     <!-- Post Inner / End -->
 
+    <?php comments_template( '', true ); ?>
+
 </article>

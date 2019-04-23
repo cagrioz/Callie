@@ -149,10 +149,10 @@
                                     <?php if ($file['fileformat'] == 'mp4') : ?>
                                         <li data-duration="<?php if ($story_video_duration) {echo esc_attr($story_video_duration);} else {echo esc_attr($file['length']);} ?>"><video src="<?php echo esc_url($file['url']); ?>" controls></video></li>
                                     <?php else : ?>
-                                        <li data-duration="3"><h3>MP4 fileformat is only allowed in story.</h3></li>
+                                        <li data-duration="3"><h3><?php esc_html_e('MP4 fileformat is only allowed in story.', 'callie'); ?></h3></li>
                                     <?php endif; ?>
                                 <?php else : ?>
-                                    <li data-duration="<?php echo esc_attr($story_img_duration); ?>"><img src="<?php echo esc_url($file['url']); ?>" alt="<?php echo bloginfo('name'); ?> Story" /></li>
+                                    <li data-duration="<?php echo esc_attr($story_img_duration); ?>"><img src="<?php echo esc_url($file['url']); ?>" alt="<?php echo esc_attr__(bloginfo('name') . ' Story', 'callie'); ?>" /></li>
                                     <?php
                                     $images[] = $file['url'];
                                     ?>
@@ -175,7 +175,7 @@
 
                     <?php for ($i = 0; $i < count($images); $i++) : ?>
                         <?php if ( $i == 5 ) { break; } ?>
-                        <li><img src="<?php echo esc_url( $images[$i] ); ?>" alt="<?php echo bloginfo('name'); ?> story background"></li>
+                        <li><img src="<?php echo esc_url( $images[$i] ); ?>" alt="<?php echo esc_attr__(bloginfo('name') . ' story background', 'callie'); ?>"></li>
                     <?php endfor; ?>
 
                 <?php else : ?>

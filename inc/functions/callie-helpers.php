@@ -200,6 +200,23 @@ if ( !function_exists( 'callie_allowed_html_tags' ) ) {
         'data' => array(),
         'rel'   => array()
       ),
+      'h4' => array(
+        'class' => array()
+      ),
+      'script' => array(
+        'type' => array()
+      ),
+      'label' => array(
+        'class' => array(),
+        'for' => array()
+      ),
+      'input' => array(
+        'type' => array(),
+        'id' => array(),
+        'name' => array(),
+        'value' => array(),
+        'class' => array()
+      ),
       'i' => array(
         'class' => array(),
         'title' => array(),
@@ -237,6 +254,10 @@ if ( !function_exists( 'callie_allowed_html_tags' ) ) {
         'class' => array(),
         'style' => array()
       ),
+      'cite' => array(
+        'class' => array()
+      ),
+
       'img' => array(
           'alt'    => array(),
           'class'  => array(),
@@ -244,15 +265,41 @@ if ( !function_exists( 'callie_allowed_html_tags' ) ) {
           'src'    => array(),
           'width'  => array()
       ),
+      'form' => array(
+          'action'   => array(),
+          'method' => array(),
+          'class' => array(),
+          'id' => array(),
+          'target' => array()
+      ),
       'select' => array(
           'id'   => array(),
           'class' => array(),
+          'onchange' => array(),
           'name' => array()
       ),
       'option' => array(
           'value' => array(),
-          'selected' => array()
+          'selected' => array(),
+          'class' => array()
       ),
+      'table' => array(
+          'id' => array(),
+          'class' => array()
+      ),
+      'caption' => array(),
+      'thead' => array(),
+      'tbody' => array(),
+      'th' => array(
+        'scope' => array(),
+        'title' => array()
+      ),
+      'tr' => array(),
+      'td' => array(
+      	'class' => array(),
+      	'id' => array(),
+        'colspan' => array()
+      )
     );
 
   }

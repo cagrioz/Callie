@@ -50,7 +50,7 @@
             <a class="post-thumbnail video" href="<?php echo esc_attr( $iframe_url ); ?>">
                 <?php the_post_thumbnail('callie_thumb'); ?>
                 <span class="play-icon">
-                    <img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/icons/play.png' ); ?>" alt="play icon">
+                    <img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/icons/play.png' ); ?>" alt="<?php echo esc_attr__( bloginfo('name') . ' play icon', 'callie'); ?>">
                 </span>
             </a>
 
@@ -100,6 +100,6 @@
 
     <?php endif; ?>
 
-    <a class="read-more" href="standard-post.html"><img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/icons/next.svg' ); ?>" alt="read more"></a>
+    <a class="read-more" href="<?php echo esc_url( get_permalink() ); ?>"><img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/icons/next.svg' ); ?>" alt="<?php echo esc_attr__( bloginfo('name') . ' read more', 'callie'); ?>"></a>
 
 </article>

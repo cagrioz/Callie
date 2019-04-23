@@ -444,4 +444,4 @@ StoryView.prototype.finish = function( prev ) {
   }
   else this.closeStory();
 
-}
+} 

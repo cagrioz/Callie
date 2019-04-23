@@ -215,7 +215,7 @@ if ( ! function_exists( 'callie_load_scripts' ) ) :
 		wp_enqueue_script( 'callie_owl', get_template_directory_uri() . '/assets/js/libs/owl.carousel.min.js', array('jquery'), '2.3.4', true );
 		wp_enqueue_script( 'callie_fitvids', get_template_directory_uri() . '/assets/js/libs/fitvids.js', array(), '1.1.0', true );
 		wp_enqueue_script( 'masonry' );
-		wp_enqueue_script( 'callie_script', get_template_directory_uri() . '/assets/js/callie.js', array('jquery', 'masonry'), CALLIE_VERSION, true );
+		wp_enqueue_script( 'callie_script', get_template_directory_uri() . '/assets/js/callie.js', array('jquery', 'masonry', 'callie_story'), CALLIE_VERSION, true );
 
 		if ( is_singular() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
@@ -232,7 +232,7 @@ function callie_my_load_more_scripts() {
 	wp_enqueue_script('jquery');
  
 	// register our main script but do not enqueue it yet
-	wp_register_script( 'callie_loadmore', get_stylesheet_directory_uri() . '/callieloadmore.js', array('jquery', 'masonry') );
+	wp_register_script( 'callie_loadmore', get_stylesheet_directory_uri() . '/assets/js/libs/callieloadmore.js', array('jquery', 'masonry') );
  
 	// now the most interesting part
 	// we have to pass parameters to callieloadmore.js script but we can get the parameters values only in PHP
@@ -259,7 +259,7 @@ function callie_loadmore_ajax_handler(){
 	// it is always better to use WP_Query but not here
 	query_posts( $args );
  
-	if( have_posts() ) :
+	if ( have_posts() ) :
  
 		// run the loop
 		while( have_posts() ): the_post();
@@ -269,7 +269,6 @@ function callie_loadmore_ajax_handler(){
 			get_template_part( 'inc/post/content' );
 			// for the test purposes comment the line above and uncomment the below one
 			// the_title();
- 
  
 		endwhile;
  
