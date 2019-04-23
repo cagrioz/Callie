@@ -110,17 +110,18 @@ if ( ! function_exists('callie_socials') ) {
  */
 if ( ! function_exists('callie_social_profiles') ) {
 	function callie_social_profiles() {
-
+        $output = '';
     	$socials = callie_socials();
 
 	    foreach ( $socials as $social => $media ) :
 			if ( get_theme_mod('social_' . $social, '') ) : 
-	    		?>
-                <li><a href="<?php echo esc_url( get_theme_mod( 'social_' . $social, '' ) ); ?>"><i class="fa fa-<?php echo esc_html($social); ?>"></i></a></li>
-                <?php
+
+                $output .= '<a href="' . esc_url( get_theme_mod( 'social_' . $social, '' ) ) . '"><i class="fa fa-' . esc_attr($social) . '"></i></a>';
+
             endif;
 		endforeach;
 
+        return $output;
 	}
 }
 
@@ -332,9 +333,10 @@ if ( ! function_exists( 'callie_footer_widgets' ) ){
 			</div>
 			<!-- Footer Column / End -->
 			<?php 
-
 		}
+
 		$output .= ob_get_clean();
+
         echo wp_kses($output, $allowed_html);
 	}
 }

@@ -61,6 +61,7 @@ get_header(); ?>
             </main>
             <!-- Postbar / End -->
 
+            <?php if ( is_active_sidebar( 'sidebar-primary' ) ) : ?>
             <!-- Sidebar -->
             <aside class="sidebar <?php echo esc_attr(callie_archive_sidebar()); ?>">
 
@@ -68,6 +69,7 @@ get_header(); ?>
 
             </aside>
             <!-- Sidebar / End -->
+            <?php endif; ?>
 
         </div>
     </div>

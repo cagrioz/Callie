@@ -25,43 +25,47 @@
         ================================================== -->
         <header class="header">
             <div class="container">
+                <div class="header-flex">  
                 
-                <!-- Logo -->
-                <div class="logo" itemscope itemtype="http://schema.org/WebPage">
-                <?php if ( has_custom_logo() ) : ?>
-                    <?php the_custom_logo(); ?>
-                <?php else : ?>
-                    <h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
-                <?php endif; ?>
+                    <!-- Logo -->
+                    <div class="logo" itemscope itemtype="http://schema.org/WebPage">
+                    <?php if ( has_custom_logo() ) : ?>
+                        <?php the_custom_logo(); ?>
+                    <?php else : ?>
+                        <h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
+                    <?php endif; ?>
+                    </div>
+                    <!-- Logo / End -->
+
+                    <!-- Mobile Navigation Toggle -->
+                    <span class="mobile-toggle"><i class="fa fa-bars"></i></span>
+                    <!-- Mobile Navigation Toggle / End -->
+
+                    <!-- Navigation -->
+                    <nav class="navigation">
+
+                        <!-- Main Menu -->
+                        <?php
+                        wp_nav_menu( array(
+                            'theme_location' => 'main-menu',
+                            'container'      => false,
+                            'menu_class'     => 'main-menu'
+                        ) );
+                        ?>
+                        <!-- Main Menu / End -->
+
+                        <?php if ( callie_social_profiles() ) : ?>
+                        <!-- Navigation Socials -->
+                        <ul class="navigation-socials">
+                            <?php echo callie_social_profiles(); ?>
+                        </ul>
+                        <!-- Navigation Socials / End -->
+                        <?php endif; ?>
+
+                    </nav>
+                    <!-- Navigation / End -->
+                    
                 </div>
-                <!-- Logo / End -->
-
-                <!-- Mobile Navigation Toggle -->
-                <span class="mobile-toggle"><i class="fa fa-bars"></i></span>
-                <!-- Mobile Navigation Toggle / End -->
-
-                <!-- Navigation -->
-                <nav class="navigation">
-
-                    <!-- Main Menu -->
-                    <?php
-                    wp_nav_menu( array(
-                        'theme_location' => 'main-menu',
-                        'container'      => false,
-                        'menu_class'     => 'main-menu'
-                    ) );
-                    ?>
-                    <!-- Main Menu / End -->
-
-                    <!-- Navigation Socials -->
-                    <ul class="navigation-socials">
-                        <?php callie_social_profiles(); ?>
-                    </ul>
-                    <!-- Navigation Socials / End -->
-
-                </nav>
-                <!-- Navigation / End -->
-
             </div>
         </header>
         <!-- Header / End -->

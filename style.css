@@ -16,7 +16,6 @@ Text Domain: callie
 # Reset CSS
 # WP Core
 # General Styling
-    * Scrollbar
     * Headlines
     * Paragraphs
     * Forms
@@ -478,18 +477,6 @@ b {
     margin: 0;
 }
 
-/* Scrollbar */
-*::-webkit-scrollbar, * + *::-webkit-scrollbar {
-  width: 0.6em;
-  height: 0.6em;
-}
-
-*::-webkit-scrollbar-thumb, * + *::-webkit-scrollbar-thumb {
-  background: #ff8e7a;border-radius: 8px; }
-
-*::-webkit-scrollbar-track, * + *::-webkit-scrollbar-track {
-  background: #ffc7bd; }
-
 /* Headlines */
 h1,
 h2,
@@ -645,14 +632,15 @@ input:focus, textarea:focus {
     .container { width:750px; }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1020px) {
     .container { width:1000px; }
 }
 
 .postbar { width:65.7732%; }
 .sidebar { width:31.54639175257732%; }
 
-.postbar.fullwidth {
+.postbar.fullwidth,
+.postbar.nowidget-full {
     width: 100%;
     float: left;
 }
@@ -765,47 +753,70 @@ input:focus, textarea:focus {
 	width: 100%;
 	display: table;
 	background-color: #fcf4f2;
-	line-height: 136px;
     margin-bottom: 42px;
 }
 
-.header .navigation { float:right; }
-.header .logo { float:left; }
-.header .main-menu { float:left; }
+.header-flex {
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    align-content: center;
+    min-height: 136px;
+    padding: 30px 0;
+    justify-content: space-between;
+}
+
+.header .navigation {
+    text-align: right;
+    display: inline-flex;
+    align-self: center;
+}
+.header .logo { 
+    margin-right: 100px;
+    display: inline-flex;
+    align-self: center;
+}
+
 .header .navigation-socials {
-	float: right;
-	margin-left: 32px;
+    margin-left: 22px;
+    align-self: center;
 }
 
 .header .logo img { height:42px; max-width:164px; }
 .widget .logo { height:42px!important; max-width:164px!important; }
-.header .logo h1 { line-height:136px; }
+.header .logo h1 { margin-bottom:0; }
 
 .header .navigation * li {
     display: inline-block;
     position: relative;
 }
 
+.header .main-menu a { padding:30px 52px 30px 0; }
+
 .header .main-menu a,
 .mobile-navigation a {
 	letter-spacing: 0.16em;
     text-transform: uppercase;
-    font: 12px/11.3em 'Dosis', sans-serif;
-    padding: 30px 52px 30px 0;
-}
-
-.header .main-menu li:last-child a,
-.header .navigation-socials li:last-child a { 
-    padding-right: 0;
+    font: 12px/32px 'Dosis', sans-serif;
 }
 
 .header .navigation-socials a {
     font-size: 13px;
-    padding: 20px 20px 20px 0;
-    line-height: 10.4em;
+    padding: 30px 10px;
     -webkit-transition: 0s;
     transition: 0s;
 }
+
+.header .main-menu li:last-child a,
+.header .navigation-socials a:last-child { 
+    padding-right: 0;
+}
+
+.header .navigation-socials a .fa { display:inline; }
 
 /* ------- Dropdown Menu ------- */
 .navigation ul ul {
@@ -814,12 +825,17 @@ input:focus, textarea:focus {
     visibility: hidden;
     position: absolute;
     width: 180px;
-    top: calc(100% - 30px);
+    top: calc(100% + 23px);
     z-index: 11;
     -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
     box-shadow:         0px 1px 3px 0px rgba(0, 0, 0, 0.15);
     -webkit-transition: all .3s ease-in-out;
     transition:         all .3s ease-in-out;
+}
+
+@media (max-width: 1280px) and (min-width: 1020px) {
+    .navigation ul ul { width:165px; }
+    .main-menu > li:nth-last-child(-n+2) ul { left:-20%; }
 }
 
 .navigation ul ul li {
@@ -838,6 +854,7 @@ input:focus, textarea:focus {
 .header .navigation ul ul a {
     display: block;
     padding: 16px!important;
+    font-size: 11px;
 }
 
 .header .navigation ul ul,
@@ -851,8 +868,8 @@ input:focus, textarea:focus {
 }
 
 .navigation ul ul ul {
-    top: 0;
-    left: 100%;
+    top: 39px;
+    left: 20%;
 }
 
 /* ------- Mobile Menu ------- */
@@ -1008,11 +1025,8 @@ input:focus, textarea:focus {
     white-space: pre-wrap;
     word-wrap: break-word;
  }
-.post-title a { word-break: break-all; }
 
-.page .post-title h1 {
-    margin-bottom: 35px;
-}
+.page .post .post-title h1 { margin-bottom:35px; }
 
 /* Post Elements */
 .normal-page .post-title h1,
@@ -1502,12 +1516,12 @@ input:focus, textarea:focus {
 }
 
 .post-footer, 
-.post-text {
+.post-text,
+.post .page-links {
     display: block;
     width: 100%;
+    float:left;
 }
-
-.post-text { float:left; }
 
 .post-header,
 .post .post-thumbnail,

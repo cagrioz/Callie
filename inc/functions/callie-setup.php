@@ -112,7 +112,7 @@ if ( ! function_exists( 'callie_fonts_url' ) ) :
 		$subsets   = 'latin,latin-ext';
 
 		/* translators: If there are characters in your language that are not supported by Dosis, translate this to 'off'. Do not translate into your own language. */
-		if ( 'off' !== _x( 'on', 'Lora font: on or off', 'callie' ) ) {
+		if ( 'off' !== _x( 'on', 'Dosis font: on or off', 'callie' ) ) {
 			$fonts[] = 'Dosis:300,400';
 		}
 
@@ -157,16 +157,6 @@ if ( ! function_exists('callie_register_sidebars') ) {
 				'after_title'   => '</h4></div>',
 			));
 
-			register_sidebar(array(
-				'name'          => esc_html__( 'Page Sidebar', 'callie' ),
-				'id'            => 'sidebar-pages',
-				'description'   => esc_html__( 'Add widgets here to appear in your page sidebar.', 'callie' ),
-				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<div class="widget-title"><h4>',
-				'after_title'   => '</h4></div>',
-			));
-
 			for ($i = 1; $i <= 4; $i++) {
 				register_sidebar( array(
 					'name'          => sprintf( esc_html__( 'Footer Column %s', 'callie' ), $i ),
@@ -199,11 +189,11 @@ if ( ! function_exists( 'callie_load_scripts' ) ) :
 		/**
 		 * Load styles
 		 */
-		wp_enqueue_style( 'callie_animate', get_template_directory_uri() . '/assets/css/animate.min.css', array(), '3.7.0' );
+		wp_enqueue_style( 'animate', get_template_directory_uri() . '/assets/css/animate.min.css', array(), '3.7.0' );
 		wp_enqueue_style( 'callie_story', get_template_directory_uri() . '/assets/css/callie-story.css', array(), CALLIE_VERSION );
-		wp_enqueue_style( 'callie_font_awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css', array(), '4.7.0' );
-		wp_enqueue_style( 'callie_owl', get_template_directory_uri() . '/assets/css/owl.carousel.min.css', array(), '2.3.4' );
-		wp_enqueue_style( 'callie_magnific', get_template_directory_uri() . '/assets/css/magnific-popup.min.css', array(), '1.1.0' );
+		wp_enqueue_style( 'font_awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css', array(), '4.7.0' );
+		wp_enqueue_style( 'owl_carousel', get_template_directory_uri() . '/assets/css/owl.carousel.min.css', array(), '2.3.4' );
+		wp_enqueue_style( 'magnific_popup', get_template_directory_uri() . '/assets/css/magnific-popup.min.css', array(), '1.1.0' );
 		wp_enqueue_style( 'callie_style', get_template_directory_uri() . '/style.css', array(), CALLIE_VERSION );
 		wp_enqueue_style( 'callie_responsive', get_template_directory_uri() . '/assets/css/responsive.css', array(), CALLIE_VERSION );
 
@@ -211,9 +201,9 @@ if ( ! function_exists( 'callie_load_scripts' ) ) :
 		 * Load scripts
 		 */
 		wp_enqueue_script( 'callie_story', get_template_directory_uri() . '/assets/js/libs/callie-story.js', array('jquery'), CALLIE_VERSION, true );
-		wp_enqueue_script( 'callie_magnific', get_template_directory_uri() . '/assets/js/libs/magnific-popup.min.js', array('jquery'), '1.1.0', true );
-		wp_enqueue_script( 'callie_owl', get_template_directory_uri() . '/assets/js/libs/owl.carousel.min.js', array('jquery'), '2.3.4', true );
-		wp_enqueue_script( 'callie_fitvids', get_template_directory_uri() . '/assets/js/libs/fitvids.js', array(), '1.1.0', true );
+		wp_enqueue_script( 'magnific_popup', get_template_directory_uri() . '/assets/js/libs/magnific-popup.min.js', array('jquery'), '1.1.0', true );
+		wp_enqueue_script( 'owl_carousel', get_template_directory_uri() . '/assets/js/libs/owl.carousel.min.js', array('jquery'), '2.3.4', true );
+		wp_enqueue_script( 'fitvids', get_template_directory_uri() . '/assets/js/libs/fitvids.js', array(), '1.1.0', true );
 		wp_enqueue_script( 'masonry' );
 		wp_enqueue_script( 'callie_script', get_template_directory_uri() . '/assets/js/callie.js', array('jquery', 'masonry', 'callie_story'), CALLIE_VERSION, true );
 

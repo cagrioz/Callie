@@ -1,7 +1,7 @@
 jQuery(function($){ // use jQuery code inside this to avoid "$ is not defined" error
 	"use strict"; 
 
-	$('.callie_loadmore').click(function(){
+	$('.callie_loadmore').on('click', function() {
  
 		var button = $(this),
 		    data = {

@@ -54,7 +54,7 @@ if ( ! function_exists('callie_content_class') ) {
     function callie_content_class() {
         $sidebar = get_theme_mod('home_sidebar', 'r_sidebar');
 
-        if ( $sidebar == 'no_sidebar' ) {
+        if ( $sidebar == 'no_sidebar' || !is_active_sidebar( 'sidebar-primary') ) {
             $class = 'fullwidth';
         } else {
 
@@ -104,7 +104,7 @@ if ( ! function_exists('callie_single_content') ) {
     function callie_single_content() {
         $sidebar = get_theme_mod('single_sidebar', 'r_sidebar');
 
-        if ( $sidebar == 'no_sidebar' ) {
+        if ( $sidebar == 'no_sidebar' || !is_active_sidebar( 'sidebar-primary') ) {
             $class = 'fullwidth';
         } else {
 
@@ -154,7 +154,7 @@ if ( ! function_exists('callie_archive_content') ) {
     function callie_archive_content() {
         $sidebar = get_theme_mod('archive_sidebar', 'r_sidebar');
 
-        if ( $sidebar == 'no_sidebar' ) {
+        if ( $sidebar == 'no_sidebar' || !is_active_sidebar( 'sidebar-primary') ) {
             $class = 'fullwidth';
         } else {
 

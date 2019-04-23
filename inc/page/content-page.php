@@ -53,10 +53,9 @@
            
        </div>
 
+        <?php if(has_tag()) : ?>
         <!-- Post Footer -->
         <div class="post-footer">
-
-            <?php if(has_tag()) : ?>
 
             <!-- Post Tags -->
             <div class="post-tags">
@@ -64,9 +63,8 @@
             </div>
             <!-- Post Tags / End -->
 
-            <?php endif; ?>
-
         </div>
+        <?php endif; ?>
 
     </div>
     <!-- Post Inner / End -->

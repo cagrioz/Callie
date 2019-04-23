@@ -10,7 +10,5 @@
  * @license    http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2 or later
  */
 
-if ( is_active_sidebar( 'sidebar-primary' )  ) :
-    dynamic_sidebar( 'sidebar-primary' );
-endif;
+dynamic_sidebar( 'sidebar-primary' );
 ?>

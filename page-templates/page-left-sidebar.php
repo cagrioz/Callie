@@ -3,7 +3,13 @@
  * Template Name: Left Sidebar
  * Template Post Type: page
  */
-get_header(); ?>
+get_header();
+$class = '';
+
+if ( !is_active_sidebar( 'sidebar-primary' ) ) {
+    $class = ' nowidget-full';
+}
+?>
 
 <!-- Content
 ================================================== -->
@@ -34,6 +40,7 @@ get_header(); ?>
             </main>
             <!-- Postbar / End -->
 
+            <?php if ( is_active_sidebar( 'sidebar-primary' )  ) : ?>
             <!-- Sidebar -->
             <aside class="sidebar pull-left">
 
@@ -41,6 +48,7 @@ get_header(); ?>
 
             </aside>
             <!-- Sidebar / End -->
+            <?php endif; ?>
 
         </div>
     </div>
