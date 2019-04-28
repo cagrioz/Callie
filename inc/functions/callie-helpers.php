@@ -70,7 +70,13 @@ if ( ! function_exists('callie_loadmore') ) {
 	function callie_loadmore() { ?>
 		<!-- Load More Button -->
 		<div class="post-load-wrap">
-			<div class="callie_loadmore"></div>
+    		<div class="callie_loadmore"></div>
+            <div class="hover-block">
+                <div class="loadmore-hoverbox">
+                    If you want to see more posts why you're waiting?
+                    <span class="triangle"></span>
+                </div>
+            </div>
 		</div>
 		<!-- Load More Button / End -->
 	 	<?php
@@ -177,11 +183,12 @@ if ( ! function_exists('callie_comments') ) {
 					   <?php echo wp_kses_post( apply_filters( 'comment_text', get_comment_text() ) ) ?>
 				    </div>
 				    <span class="comment-reply">
-					   <?php comment_reply_link(array_merge( $args, array('reply_text' => esc_html__('Reply', 'callie'), 'depth' => $depth, 'max_depth' => $args['max_depth'])), $comment_ID); ?>
+					   <?php comment_reply_link(array_merge( $args, array('reply_text' => esc_html__('Reply', 'callie'), 'depth' => $depth, 'max_depth' => $args['max_depth'])), $comment->comment_ID); ?>
 				    </span>
 				    <span class="comment-edit"><?php edit_comment_link(esc_html__('Edit', 'callie')); ?></span>
 				</div>
 			</div>
+      <div class="clearfix"></div>
 	   <?php
 	}
 }

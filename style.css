@@ -824,7 +824,7 @@ input:focus, textarea:focus {
     opacity: 0;
     visibility: hidden;
     position: absolute;
-    width: 180px;
+    width: 165px;
     top: calc(100% + 23px);
     z-index: 11;
     -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
@@ -833,9 +833,8 @@ input:focus, textarea:focus {
     transition:         all .3s ease-in-out;
 }
 
-@media (max-width: 1280px) and (min-width: 1020px) {
-    .navigation ul ul { width:165px; }
-    .main-menu > li:nth-last-child(-n+2) ul { left:-20%; }
+@media (min-width: 1020px) {
+    .main-menu > li:nth-last-child(-n+2) ul { left:-100%; }
 }
 
 .navigation ul ul li {
@@ -853,7 +852,7 @@ input:focus, textarea:focus {
 
 .header .navigation ul ul a {
     display: block;
-    padding: 16px!important;
+    padding: 16px!important; 
     font-size: 11px;
 }
 
@@ -868,8 +867,8 @@ input:focus, textarea:focus {
 }
 
 .navigation ul ul ul {
-    top: 39px;
-    left: 20%;
+    top: 0px;
+    left: -100%;
 }
 
 /* ------- Mobile Menu ------- */
@@ -996,7 +995,10 @@ input:focus, textarea:focus {
 
 /* ------- Postbar ------- */
 .post { position:relative; }
-.masonry .post:last-child {margin-bottom: 0;}
+
+.home .masonry {
+    margin-bottom: 16px;
+}
 
 /* Post Layouts & Spacings */
 .masonry .post {
@@ -1044,11 +1046,10 @@ input:focus, textarea:focus {
 }
 
 .read-more img {
-    position: absolute;
     height: 15px;
     width: auto;
-    bottom: 30px;
-    right: 30px;
+    float: right;
+    margin-top: 3px;
 }
 
 .post-tags { display:block; }
@@ -1078,6 +1079,43 @@ input:focus, textarea:focus {
     display: block;
     width: 100%;
     text-align: center;
+    position: relative;
+}
+
+.loadmore-hoverbox,
+.loadmore-hoverbox * {
+    transition: all 300ms ease-in-out;
+}
+
+.loadmore-hoverbox {
+    background-color: #222;
+    color: #fff;
+    padding: 10px 12px;
+    font-size: 14px;
+    opacity: 0;
+    visibility: hidden;
+    display: inline-block;
+    border-radius: 4px;
+    margin-top: -73px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.loadmore-hoverbox .triangle {
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    margin-left: -5px;
+    background-color: #222;
+    transform: rotate(45deg);
+}
+
+.callie_loadmore:hover + .hover-block .loadmore-hoverbox {
+    opacity: 1;
+    visibility: visible;
 }
 
 .callie_loadmore {
@@ -1092,7 +1130,7 @@ input:focus, textarea:focus {
     width: 60px;
     border-radius: 100%;
     background-color: #f6ddd6;
-    margin: 85px 0 0;
+    margin: 43px 0 85px;
 }
 
 .callie_loadmore:before {
@@ -1502,7 +1540,7 @@ input:focus, textarea:focus {
 
 .post-title h1 {
     margin-bottom: 10px;
-    letter-spacing: 0.07em;
+    letter-spacing: 0.04em;
     font: 700 30px/1.6em 'Playfair Display', serif;
 }
 
@@ -1684,9 +1722,8 @@ input:focus, textarea:focus {
 
 .post-navigation-inner img {
     float: right;
-    position: relative;
-    right: -23px;
-    top: -11px;
+    margin-top: 7px;
+    display: block;
 }
 
 .post-navigation .post-title h3,
@@ -1746,9 +1783,10 @@ input:focus, textarea:focus {
     border: 5px solid transparent;
     float: left;
     width: 100%;
+    display: block;
 }
 
-.comment img {
+.comment img.avatar {
     margin-right: 30px;
     float: left;
     border-radius: 50%;
@@ -1849,6 +1887,8 @@ input:focus, textarea:focus {
 
 .bypostauthor > .comment-list-item:first-child { border-color:#fcf4f2!important; }
 
+.comment-respond form { margin-bottom:20px; }
+
 /* =============== Owl Carousel Styles =============== */
 .owl-dot { outline:none!important; }
 
@@ -1920,13 +1960,12 @@ input:focus, textarea:focus {
     display: block;
     background-color: #fcf4f2;
     padding: 48px 0;
-    margin-top: 85px;
 }
-.single .footer,
-.page .footer {
-    margin-top: 42px;
+
+.single .content,
+.page .content {
+    margin-bottom: 42px;
 }
-.normal-page .footer { margin-top:85px; }
 
 .footer-column {
     width: 25%;

@@ -46,7 +46,7 @@
  		<?php the_comments_navigation();
 
 	  $args = array(
-		'id_form'              => 'comment-form',
+		'id_form'              => 'commentform',
 		'class_form'           => 'comment-form',
 		'title_reply'          => esc_html__( 'Leave a Reply' ,'callie'),
 		'title_reply_to'       => esc_html__( 'Leave a Comment to %s'  ,'callie'),

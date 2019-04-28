@@ -13,6 +13,7 @@
 
 <!-- Footer
 ================================================== -->
+<?php if ( is_active_sidebar( 'footer-widget-1') || is_active_sidebar( 'footer-widget-2') || is_active_sidebar( 'footer-widget-3') || is_active_sidebar( 'footer-widget-4') ) : ?>
 <footer class="footer">
     <div class="container">
         <div class="row">
@@ -23,6 +24,7 @@
     </div>
 </footer>
 <!-- Footer / End -->
+<?php endif; ?>
 
 </div>
 <!-- Wrapper / End -->

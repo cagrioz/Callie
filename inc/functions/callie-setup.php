@@ -18,6 +18,11 @@ if ( ! function_exists( 'callie_setup' ) ) :
 
 		load_theme_textdomain( 'callie', get_template_directory() . '/languages' );
 
+		add_theme_support('editor-styles');
+		add_theme_support( 'dark-editor-style' );
+		add_theme_support( 'align-wide' );
+
+
 		add_theme_support( 'html5', array(
 			'search-form',
 			'comment-form',
@@ -222,7 +227,7 @@ function callie_my_load_more_scripts() {
 	wp_enqueue_script('jquery');
  
 	// register our main script but do not enqueue it yet
-	wp_register_script( 'callie_loadmore', get_stylesheet_directory_uri() . '/assets/js/libs/callieloadmore.js', array('jquery', 'masonry') );
+	wp_register_script( 'callie_loadmore', get_template_directory_uri() . '/assets/js/libs/callieloadmore.js', array('jquery', 'masonry') );
  
 	// now the most interesting part
 	// we have to pass parameters to callieloadmore.js script but we can get the parameters values only in PHP

@@ -1,0 +1,33 @@
+/* Main column width */
+.wp-block {
+    max-width: 970px;
+}
+
+/* Width of "wide" blocks */
+.wp-block[data-align="wide"] {
+    max-width: 1080px;
+}
+
+/* Width of "full-wide" blocks */
+.wp-block[data-align="full"] {
+    max-width: none;
+}
+
+p {
+	font-family: 'Dosis', sans-serif;
+	font-size: 18px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+}
+
+.editor-post-title__input {
+	font: 700 40px 'Playfair Display', serif;
+}
